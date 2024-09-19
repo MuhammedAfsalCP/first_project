@@ -1,0 +1,618 @@
+{
+  "register-details": [
+    {
+      "id": "a8e1",
+      "name": "afsal",
+      "email": "afsal@gmail.com",
+      "password": "afsal",
+      "cart": [
+        {
+          "id": "2",
+          "name": "Grain-Free Cat Food - Salmon & Tuna",
+          "category": "Cat Food",
+          "price": 22.5,
+          "description": "Grain-free cat food packed with omega-3 from salmon and tuna for a shiny coat.",
+          "brand": "Whiskers Delight",
+          "weight": "3 kg",
+          "ingredients": [
+            "Salmon",
+            "Tuna",
+            "Sweet Potato",
+            "Peas",
+            "Vitamins"
+          ],
+          "stock": 80,
+          "rating": 4.5,
+          "image": "https://m.media-amazon.com/images/I/51ze2L18u2L.jpg",
+          "quantity": 10,
+          "total_price": 225
+        },
+        {
+          "id": "3",
+          "name": "Organic Dog Treats - Peanut Butter Flavor",
+          "category": "Dog Food",
+          "price": 15,
+          "description": "Delicious organic peanut butter-flavored dog treats, perfect for training.",
+          "brand": "BarkOrganic",
+          "weight": "500g",
+          "ingredients": [
+            "Peanut Butter",
+            "Oat Flour",
+            "Honey",
+            "Coconut Oil"
+          ],
+          "stock": 150,
+          "rating": 4.9,
+          "image": "https://m.media-amazon.com/images/I/51uPyFGtRcL._AC_UF1000,1000_QL80_.jpg",
+          "quantity": 6,
+          "total_price": 90
+        },
+        {
+          "id": "4",
+          "name": "Indoor Cat Food - Chicken & Rice",
+          "category": "Cat Food",
+          "price": 18.75,
+          "description": "Formulated for indoor cats, providing balanced nutrition with real chicken.",
+          "brand": "KittyCare",
+          "weight": "4 kg",
+          "ingredients": [
+            "Chicken",
+            "Rice",
+            "Carrots",
+            "Peas",
+            "Vitamins"
+          ],
+          "stock": 120,
+          "rating": 4.6,
+          "image": "https://m.media-amazon.com/images/I/71xPT6-dqXL.jpg",
+          "quantity": 5,
+          "total_price": 93.75
+        },
+        {
+          "id": "10",
+          "name": "Catnip-Infused Cat Treats",
+          "category": "Cat Food",
+          "price": 8.99,
+          "description": "Fun and tasty treats infused with catnip for playful cats.",
+          "brand": "PurrTreats",
+          "weight": "200g",
+          "ingredients": [
+            "Chicken",
+            "Catnip",
+            "Oat Flour",
+            "Natural Flavors"
+          ],
+          "stock": 200,
+          "rating": 4.8,
+          "image": "https://images-cdn.ubuy.co.in/63dcf909b6c9297389537499-6-pack-friskies-natural-cat-treats.jpg",
+          "quantity": 3,
+          "total_price": 26.97
+        },
+        {
+          "id": "1",
+          "name": "Premium Dog Food - Chicken Flavor",
+          "category": "Dog Food",
+          "price": 25.99,
+          "description": "High-quality dog food with real chicken for optimal nutrition and flavor.",
+          "brand": "PawBest",
+          "weight": "5 kg",
+          "ingredients": [
+            "Chicken",
+            "Rice",
+            "Oats",
+            "Vegetable Oil",
+            "Vitamins"
+          ],
+          "stock": 100,
+          "rating": 4.7,
+          "image": "https://m.media-amazon.com/images/I/414uRei9j4L.jpg",
+          "quantity": 5,
+          "total_price": 129.95
+        }
+      ]
+    },
+    {
+      "id": "e8ed",
+      "name": "afasl",
+      "email": "afsal1@gmail.com",
+      "password": "afsal",
+      "cart": [
+        {
+          "id": "1",
+          "name": "Premium Dog Food - Chicken Flavor",
+          "category": "Dog Food",
+          "price": 25.99,
+          "description": "High-quality dog food with real chicken for optimal nutrition and flavor.",
+          "brand": "PawBest",
+          "weight": "5 kg",
+          "ingredients": [
+            "Chicken",
+            "Rice",
+            "Oats",
+            "Vegetable Oil",
+            "Vitamins"
+          ],
+          "stock": 100,
+          "rating": 4.7,
+          "image": "https://m.media-amazon.com/images/I/414uRei9j4L.jpg",
+          "quantity": 5,
+          "total_price": 129.95
+        },
+        {
+          "id": "3",
+          "name": "Organic Dog Treats - Peanut Butter Flavor",
+          "category": "Dog Food",
+          "price": 15,
+          "description": "Delicious organic peanut butter-flavored dog treats, perfect for training.",
+          "brand": "BarkOrganic",
+          "weight": "500g",
+          "ingredients": [
+            "Peanut Butter",
+            "Oat Flour",
+            "Honey",
+            "Coconut Oil"
+          ],
+          "stock": 150,
+          "rating": 4.9,
+          "image": "https://m.media-amazon.com/images/I/51uPyFGtRcL._AC_UF1000,1000_QL80_.jpg",
+          "quantity": 3,
+          "total_price": 45
+        },
+        {
+          "id": "4",
+          "name": "Indoor Cat Food - Chicken & Rice",
+          "category": "Cat Food",
+          "price": 18.75,
+          "description": "Formulated for indoor cats, providing balanced nutrition with real chicken.",
+          "brand": "KittyCare",
+          "weight": "4 kg",
+          "ingredients": [
+            "Chicken",
+            "Rice",
+            "Carrots",
+            "Peas",
+            "Vitamins"
+          ],
+          "stock": 120,
+          "rating": 4.6,
+          "image": "https://m.media-amazon.com/images/I/71xPT6-dqXL.jpg",
+          "quantity": 4,
+          "total_price": 75
+        },
+        {
+          "id": "11",
+          "name": "Puppy Food - Chicken & Rice",
+          "category": "Dog Food",
+          "price": 24.5,
+          "description": "Specially formulated for puppies, with real chicken and rice for growth.",
+          "brand": "PuppyPro",
+          "weight": "4 kg",
+          "ingredients": [
+            "Chicken",
+            "Rice",
+            "Peas",
+            "Carrots",
+            "Vitamins"
+          ],
+          "stock": 85,
+          "rating": 4.9,
+          "image": "https://m.media-amazon.com/images/I/61Hm3sqBoIL._SY679_.jpg",
+          "quantity": 1,
+          "total_price": 24.5
+        },
+        {
+          "id": "12",
+          "name": "Weight Control Cat Food - Turkey & Vegetables",
+          "category": "Cat Food",
+          "price": 20,
+          "description": "Weight control formula for cats with turkey and healthy vegetables.",
+          "brand": "SlimKitty",
+          "weight": "3.5 kg",
+          "ingredients": [
+            "Turkey",
+            "Carrots",
+            "Peas",
+            "Oats",
+            "Vitamins"
+          ],
+          "stock": 60,
+          "rating": 4.3,
+          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfCvors2yQYthU4qZ9hueBP-J8JTsulGbkRQ&s",
+          "quantity": 1,
+          "total_price": 20
+        },
+        {
+          "id": "8",
+          "name": "Sensitive Stomach Cat Food - Turkey & Rice",
+          "category": "Cat Food",
+          "price": 21.25,
+          "description": "Special formula for cats with sensitive stomachs, featuring turkey and rice.",
+          "brand": "TummyCare",
+          "weight": "3 kg",
+          "ingredients": [
+            "Turkey",
+            "Rice",
+            "Pumpkin",
+            "Peas",
+            "Vitamins"
+          ],
+          "stock": 70,
+          "rating": 4.4,
+          "image": "https://s7d2.scene7.com/is/image/PetSmart/5309312",
+          "quantity": 1,
+          "total_price": 21.25
+        }
+      ]
+    }
+  ],
+  "Prudocts": [
+    {
+      "id": "1",
+      "name": "Premium Dog Food - Chicken Flavor",
+      "category": "Dog Food",
+      "price": 25.99,
+      "description": "High-quality dog food with real chicken for optimal nutrition and flavor.",
+      "brand": "PawBest",
+      "weight": "5 kg",
+      "ingredients": [
+        "Chicken",
+        "Rice",
+        "Oats",
+        "Vegetable Oil",
+        "Vitamins"
+      ],
+      "stock": 100,
+      "rating": 4.7,
+      "image": "https://m.media-amazon.com/images/I/414uRei9j4L.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Grain-Free Cat Food - Salmon & Tuna",
+      "category": "Cat Food",
+      "price": 22.5,
+      "description": "Grain-free cat food packed with omega-3 from salmon and tuna for a shiny coat.",
+      "brand": "Whiskers Delight",
+      "weight": "3 kg",
+      "ingredients": [
+        "Salmon",
+        "Tuna",
+        "Sweet Potato",
+        "Peas",
+        "Vitamins"
+      ],
+      "stock": 80,
+      "rating": 4.5,
+      "image": "https://m.media-amazon.com/images/I/51ze2L18u2L.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Organic Dog Treats - Peanut Butter Flavor",
+      "category": "Dog Food",
+      "price": 15,
+      "description": "Delicious organic peanut butter-flavored dog treats, perfect for training.",
+      "brand": "BarkOrganic",
+      "weight": "500g",
+      "ingredients": [
+        "Peanut Butter",
+        "Oat Flour",
+        "Honey",
+        "Coconut Oil"
+      ],
+      "stock": 150,
+      "rating": 4.9,
+      "image": "https://m.media-amazon.com/images/I/51uPyFGtRcL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Indoor Cat Food - Chicken & Rice",
+      "category": "Cat Food",
+      "price": 18.75,
+      "description": "Formulated for indoor cats, providing balanced nutrition with real chicken.",
+      "brand": "KittyCare",
+      "weight": "4 kg",
+      "ingredients": [
+        "Chicken",
+        "Rice",
+        "Carrots",
+        "Peas",
+        "Vitamins"
+      ],
+      "stock": 120,
+      "rating": 4.6,
+      "image": "https://m.media-amazon.com/images/I/71xPT6-dqXL.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Senior Dog Food - Lamb & Rice",
+      "category": "Dog Food",
+      "price": 28.99,
+      "description": "Special formula for senior dogs with lamb and rice for easy digestion.",
+      "brand": "GoldenYears",
+      "weight": "6 kg",
+      "ingredients": [
+        "Lamb",
+        "Rice",
+        "Barley",
+        "Flaxseed",
+        "Vitamins"
+      ],
+      "stock": 75,
+      "rating": 4.8,
+      "image": "https://rukminim2.flixcart.com/image/850/1000/kbxzbm80/pet-food/w/s/z/3-dog-lamb-rice-adult-smartheart-original-imaft6kch2grnf5d.jpeg?q=90&crop=false"
+    },
+    {
+      "id": "6",
+      "name": "Kitten Food - Chicken & Fish",
+      "category": "Cat Food",
+      "price": 19.99,
+      "description": "Nutrient-dense food for growing kittens with chicken and fish.",
+      "brand": "MeowMix",
+      "weight": "2 kg",
+      "ingredients": [
+        "Chicken",
+        "Fish",
+        "Rice",
+        "Oats",
+        "Vitamins"
+      ],
+      "stock": 95,
+      "rating": 4.9,
+      "image": "https://www.bigbasket.com/media/uploads/p/l/40244193_2-wigglesin-kittibles-kitten-dry-food-chicken-tuna-under-1-year-aids-vision-healthy-skin-coat.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Grain-Free Dog Food - Beef & Sweet Potato",
+      "category": "Dog Food",
+      "price": 30,
+      "description": "Grain-free dog food with beef and sweet potato for sensitive stomachs.",
+      "brand": "PupPal",
+      "weight": "7 kg",
+      "ingredients": [
+        "Beef",
+        "Sweet Potato",
+        "Peas",
+        "Carrots",
+        "Vitamins"
+      ],
+      "stock": 90,
+      "rating": 4.6,
+      "image": "https://images-cdn.ubuy.co.in/64cbe53bfb8482736d18ff77-merrick-grain-free-texas-beef-sweet.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Sensitive Stomach Cat Food - Turkey & Rice",
+      "category": "Cat Food",
+      "price": 21.25,
+      "description": "Special formula for cats with sensitive stomachs, featuring turkey and rice.",
+      "brand": "TummyCare",
+      "weight": "3 kg",
+      "ingredients": [
+        "Turkey",
+        "Rice",
+        "Pumpkin",
+        "Peas",
+        "Vitamins"
+      ],
+      "stock": 70,
+      "rating": 4.4,
+      "image": "https://s7d2.scene7.com/is/image/PetSmart/5309312"
+    },
+    {
+      "id": "9",
+      "name": "Dog Dental Chews - Mint Flavor",
+      "category": "Dog Food",
+      "price": 12.5,
+      "description": "Mint-flavored dental chews that help clean your dog’s teeth.",
+      "brand": "FreshPaws",
+      "weight": "300g",
+      "ingredients": [
+        "Mint",
+        "Oat Flour",
+        "Coconut Oil",
+        "Natural Flavors"
+      ],
+      "stock": 130,
+      "rating": 4.7,
+      "image": "https://m.media-amazon.com/images/I/71jTvSBgg4L._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": "10",
+      "name": "Catnip-Infused Cat Treats",
+      "category": "Cat Food",
+      "price": 8.99,
+      "description": "Fun and tasty treats infused with catnip for playful cats.",
+      "brand": "PurrTreats",
+      "weight": "200g",
+      "ingredients": [
+        "Chicken",
+        "Catnip",
+        "Oat Flour",
+        "Natural Flavors"
+      ],
+      "stock": 200,
+      "rating": 4.8,
+      "image": "https://images-cdn.ubuy.co.in/63dcf909b6c9297389537499-6-pack-friskies-natural-cat-treats.jpg"
+    },
+    {
+      "id": "11",
+      "name": "Puppy Food - Chicken & Rice",
+      "category": "Dog Food",
+      "price": 24.5,
+      "description": "Specially formulated for puppies, with real chicken and rice for growth.",
+      "brand": "PuppyPro",
+      "weight": "4 kg",
+      "ingredients": [
+        "Chicken",
+        "Rice",
+        "Peas",
+        "Carrots",
+        "Vitamins"
+      ],
+      "stock": 85,
+      "rating": 4.9,
+      "image": "https://m.media-amazon.com/images/I/61Hm3sqBoIL._SY679_.jpg"
+    },
+    {
+      "id": "12",
+      "name": "Weight Control Cat Food - Turkey & Vegetables",
+      "category": "Cat Food",
+      "price": 20,
+      "description": "Weight control formula for cats with turkey and healthy vegetables.",
+      "brand": "SlimKitty",
+      "weight": "3.5 kg",
+      "ingredients": [
+        "Turkey",
+        "Carrots",
+        "Peas",
+        "Oats",
+        "Vitamins"
+      ],
+      "stock": 60,
+      "rating": 4.3,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfCvors2yQYthU4qZ9hueBP-J8JTsulGbkRQ&s"
+    },
+    {
+      "id": "13",
+      "name": "Freeze-Dried Dog Treats - Beef Liver",
+      "category": "Dog Food",
+      "price": 14.99,
+      "description": "All-natural freeze-dried beef liver treats for dogs.",
+      "brand": "NatureBites",
+      "weight": "400g",
+      "ingredients": [
+        "Beef Liver"
+      ],
+      "stock": 100,
+      "rating": 4.6,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcU7ro9GrT-SoaXnrJU6b3isZpcVp5WcHCIg&s"
+    },
+    {
+      "id": "14",
+      "name": "Senior Cat Food - Duck & Peas",
+      "category": "Cat Food",
+      "price": 23.99,
+      "description": "Nutrient-dense food for senior cats with duck and peas for easier digestion.",
+      "brand": "OldCatCare",
+      "weight": "3 kg",
+      "ingredients": [
+        "Duck",
+        "Peas",
+        "Sweet Potato",
+        "Vitamins"
+      ],
+      "stock": 50,
+      "rating": 4.6,
+      "image": "https://assets.petco.com/petco/image/upload/f_auto,q_auto/3267448-center-1"
+    },
+    {
+      "id": "15",
+      "name": "Grain-Free Dog Biscuits - Bacon & Cheese",
+      "category": "Dog Food",
+      "price": 11.75,
+      "description": "Crunchy grain-free dog biscuits made with bacon and cheese.",
+      "brand": "BiscuitBuddy",
+      "weight": "600g",
+      "ingredients": [
+        "Bacon",
+        "Cheese",
+        "Coconut Flour",
+        "Natural Flavors"
+      ],
+      "stock": 140,
+      "rating": 4.8,
+      "image": "https://m.media-amazon.com/images/I/71lxqEyBC3L._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": "16",
+      "name": "Organic Cat Food - Chicken & Pumpkin",
+      "category": "Cat Food",
+      "price": 27.5,
+      "description": "Organic cat food made with chicken and pumpkin for a healthy diet.",
+      "brand": "NatureCat",
+      "weight": "4 kg",
+      "ingredients": [
+        "Organic Chicken",
+        "Pumpkin",
+        "Peas",
+        "Oats",
+        "Vitamins"
+      ],
+      "stock": 75,
+      "rating": 4.7,
+      "image": "https://m.media-amazon.com/images/I/61DW8Mcy7BL.jpg"
+    },
+    {
+      "id": "17",
+      "name": "Small Breed Dog Food - Lamb & Rice",
+      "category": "Dog Food",
+      "price": 26.99,
+      "description": "Special formula for small breed dogs, with lamb and rice.",
+      "brand": "SmallPaw",
+      "weight": "3 kg",
+      "ingredients": [
+        "Lamb",
+        "Rice",
+        "Carrots",
+        "Peas",
+        "Vitamins"
+      ],
+      "stock": 110,
+      "rating": 4.5,
+      "image": "https://m.media-amazon.com/images/I/61K4jIl-e9L._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": "18",
+      "name": "Grain-Free Cat Treats - Duck & Sweet Potato",
+      "category": "Cat Food",
+      "price": 9.5,
+      "description": "Grain-free treats made with duck and sweet potato for cats.",
+      "brand": "TreatPal",
+      "weight": "250g",
+      "ingredients": [
+        "Duck",
+        "Sweet Potato",
+        "Peas",
+        "Natural Flavors"
+      ],
+      "stock": 160,
+      "rating": 4.7,
+      "image": "https://m.media-amazon.com/images/I/71uwOAVqxOL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "id": "19",
+      "name": "Dog Jerky Treats - Turkey & Cranberry",
+      "category": "Dog Food",
+      "price": 13.5,
+      "description": "Soft dog jerky treats made with turkey and cranberry.",
+      "brand": "JerkyJoy",
+      "weight": "500g",
+      "ingredients": [
+        "Turkey",
+        "Cranberry",
+        "Sweet Potato",
+        "Natural Flavors"
+      ],
+      "stock": 120,
+      "rating": 4.8,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTfi6HSQ2Z8Rlvo4Afw6GioyS8EOA4GmDNlw&s"
+    },
+    {
+      "id": "20",
+      "name": "Kitten Treats - Milk & Chicken",
+      "category": "Cat Food",
+      "price": 7.99,
+      "description": "Soft and tasty kitten treats made with milk and chicken.",
+      "brand": "KittyNibbles",
+      "weight": "150g",
+      "ingredients": [
+        "Milk",
+        "Chicken",
+        "Oats",
+        "Vitamins"
+      ],
+      "stock": 140,
+      "rating": 4.9,
+      "image": "https://images-cdn.ubuy.co.in/64e06344f58d5a0c7a6e9968-temptations-kitten-chicken-and-milk-cat.jpg"
+    }
+  ]
+}
