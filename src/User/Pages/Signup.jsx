@@ -10,43 +10,106 @@ const Signup = () => {
   const {handleSubmit,name, setName, email, setEmail,pass, setPass, confirm, setConfirm, verifyname, verifyemail, verifypass,verifyconfirm}=useContext(Pascomponent)
   
    return (
-    <div className='h-[100vh] w-auto'>
-      <div className='flex h-[65vh] w-auto bg-[#fcf8ef] justify-center items-center'>
-        <div className='w-[300px] h-[390px] md:w-[60vw] border-solid border-[#1c110b] border-[2px] rounded-lg md:pl-6'>
-          <h1 className='font-sofadi font-bold text-2xl ml-3 mt-2 md:text-4xl'>Create Account</h1>
-          <div className='md:pt-6 md:w-auto flex justify-center items-center h-auto md:justify-start'>
-            <form id='full_form' action="" onSubmit={handleSubmit} className='md:h-[50vh] flex md:block flex-wrap w-[220px] md:w-[60vw] justify-center md:justify-end' >
-              <label className='md:ml-5 md:text-3xl text-lg font-semibold mt-2 md:mt-3'>Enter Your name :<span style={{display: verifyname ? 'none':verifyname==null?'none':'inline-block'}} className='pl-3'><box-icon name='error' type='solid' color='#ff0000' ></box-icon></span><span style={{display: verifyname ? 'inline-block':verifyname==null?'none':'none'}}><box-icon name='check' color='#14b30e' ></box-icon></span></label>
-              <br className='md:hidden' />
-              <input id='name'value={name} onChange={(e)=>setName(e.target.value)} className='md:ml-4 md:w-[50%] outline-none bg-transparent border-solid border-[#1c110b] border-[1px] rounded-lg mt-2 pl-3' type="text" placeholder='Enter Name' />
-              <br />
-              <label className='md:ml-5 md:text-3xl text-lg font-semibold mt-2'>Enter Your Email :<span style={{display: verifyemail ? 'none':verifyemail==null?'none':'inline-block'}} className='pl-3'><box-icon name='error' type='solid' color='#ff0000' ></box-icon></span><span style={{display: verifyemail ? 'inline-block':verifyemail==null?'none':'none'}}><box-icon name='check' color='#14b30e' ></box-icon></span></label>
-              <br className='md:hidden' />
-              <input value={email} onChange={(e)=>setEmail(e.target.value)} id='mail' className='md:ml-4 md:w-[50%] outline-none bg-transparent border-solid border-[#1c110b] border-[1px] rounded-lg mt-2 pl-3' type="email" placeholder='Enter E-mail' />
-              <br />
-              <label className='md:ml-5 md:text-3xl text-lg font-semibold mt-2 md:mt-3'>Create a Password :<span style={{display: verifypass ? 'none':verifypass==null?'none':'inline-block'}} className='pl-3'><box-icon name='error' type='solid' color='#ff0000' ></box-icon></span><span style={{display: verifypass ? 'inline-block':verifypass==null?'none':'none'}}><box-icon name='check' color='#14b30e' ></box-icon></span></label>
-              <br className='md:hidden' />
-              <input value={pass} onChange={(e)=>setPass(e.target.value)} id='password' className='md:ml-4 md:w-[45%] outline-none bg-transparent border-solid border-[#1c110b] border-[1px] rounded-lg mt-2 pl-3' type="password" placeholder='Enter Password' />
-              <br />
-              <label className='md:ml-5 md:text-3xl text-base font-semibold mt-2'>Confirm Your Password</label>
-              <span  className='hidden md:inline-block text-3xl font-semibold'>&nbsp;:</span>
-              {/* <span style={{display: verifyconfirm ? 'none':verifyconfirm==null?'none':'inline-block'}} className='hidden md:inline-block ml-2'><box-icon name='error' type='solid' color='#ff0000' ></box-icon></span> */}
-              <span style={{display: verifyconfirm ? 'inline-block':verifyconfirm==null?'none':'none'}}><box-icon name='check' color='#14b30e' ></box-icon></span>
-              <span style={{display: verifyconfirm ? 'none':verifyconfirm==null?'none':'inline-block'}} className='md:hidden'><box-icon name='error' type='solid' color='#ff0000' ></box-icon></span>
-              <br className='md:hidden' />
-              <input id='confirm' value={confirm} onChange={(e)=>setConfirm(e.target.value)} className='md:ml-4 md:w-[45%] outline-none bg-transparent border-solid border-[#1c110b] border-[1px] rounded-lg mt-2 pl-3' type="password" placeholder='Re-Enter Password' />
-              <br />
-              <button className='md:ml-[270px] md:mt-8 md:w-[200px] md:text-3xl text-xl font-semibold mt-4 bg-[#ad9279] text-white w-[100px] rounded-md' type='submit'>Submit</button>
-            </form>
+    
+    <div className='min-h-[100vh] bg-[#fcf8ef] flex flex-col'>
+    {/* Main Content */}
+    <div className='flex-grow flex items-center justify-center bg-[#fcf8ef] pt-5'>
+      <div className='w-[90vw] max-w-[500px] bg-white border border-[#1c110b] rounded-lg p-6 shadow-lg'>
+        <h1 className='font-sofadi font-bold text-2xl md:text-3xl lg:text-4xl text-center mb-6'>Create Account</h1>
+        <form id='full_form' action="" onSubmit={handleSubmit} className='flex flex-col space-y-6'>
+          
+          {/* Name Input */}
+          <div className='flex flex-col'>
+            <label className='text-base md:text-lg lg:text-xl font-semibold'>
+              Enter Your Name
+              <span className={`ml-3 ${verifyname === null ? 'hidden' : 'inline-block'}`}>
+                <box-icon name={verifyname ? 'check' : 'error'} color={verifyname ? '#14b30e' : '#ff0000'}></box-icon>
+              </span>
+            </label>
+            <input 
+              id='name'
+              value={name} 
+              onChange={(e) => setName(e.target.value)} 
+              className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none' 
+              type='text' 
+              placeholder='Enter Name' 
+            />
           </div>
-        </div>
-        
+  
+          {/* Email Input */}
+          <div className='flex flex-col'>
+            <label className='text-base md:text-lg lg:text-xl font-semibold'>
+              Enter Your Email
+              <span className={`ml-3 ${verifyemail === null ? 'hidden' : 'inline-block'}`}>
+                <box-icon name={verifyemail ? 'check' : 'error'} color={verifyemail ? '#14b30e' : '#ff0000'}></box-icon>
+              </span>
+            </label>
+            <input 
+              id='mail'
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none' 
+              type='email' 
+              placeholder='Enter E-mail' 
+            />
+          </div>
+  
+          {/* Password Input */}
+          <div className='flex flex-col'>
+            <label className='text-base md:text-lg lg:text-xl font-semibold'>
+              Create a Password
+              <span className={`ml-3 ${verifypass === null ? 'hidden' : 'inline-block'}`}>
+                <box-icon name={verifypass ? 'check' : 'error'} color={verifypass ? '#14b30e' : '#ff0000'}></box-icon>
+              </span>
+            </label>
+            <input 
+              id='password'
+              value={pass} 
+              onChange={(e) => setPass(e.target.value)} 
+              className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none' 
+              type='password' 
+              placeholder='Enter Password' 
+            />
+          </div>
+  
+          {/* Confirm Password Input */}
+          <div className='flex flex-col'>
+            <label className='text-base md:text-lg lg:text-xl font-semibold'>
+              Confirm Your Password
+              <span className={`ml-3 ${verifyconfirm === null ? 'hidden' : 'inline-block'}`}>
+                <box-icon name={verifyconfirm ? 'check' : 'error'} color={verifyconfirm ? '#14b30e' : '#ff0000'}></box-icon>
+              </span>
+            </label>
+            <input 
+              id='confirm'
+              value={confirm} 
+              onChange={(e) => setConfirm(e.target.value)} 
+              className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none' 
+              type='password' 
+              placeholder='Re-Enter Password' 
+            />
+          </div>
+  
+          {/* Submit Button */}
+          <button 
+            className='bg-[#ad9279] text-white rounded-md py-2 text-lg md:text-xl lg:text-2xl font-semibold w-full mt-4' 
+            type='submit'
+          >
+            Submit
+          </button>
+        </form>
       </div>
-     <div className='h-[5vh] bg-[#fcf8ef] font-bold flex justify-center'>
-     <Link to={'/Login'}>Alredy have Account</Link>
-     </div>
-      <Footer />
     </div>
+  
+    {/* Footer */}
+    <div className='bg-[#fcf8ef] font-bold text-center py-2'>
+      <Link to={'/Login'} className='text-blue-500 hover:underline'>Already have an account?</Link>
+    </div>
+    <Footer />
+  </div>
+  
+  
+
   )
 }
 

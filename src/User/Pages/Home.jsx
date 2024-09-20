@@ -8,7 +8,7 @@ import axios from 'axios';
 const Home = () => {
   const navigate=useNavigate()
   const [products, setProducts] = useState([])
-  const {filteredProducts,setFilteredProducts,specificcart,setSpecificcart,email,userid,cartadd}=useContext(Pascomponent)
+  const {filteredProducts,setFilteredProducts,specificcart,setSpecificcart,email,userid,cartadd,search}=useContext(Pascomponent)
   const {itemfilter,user}=useContext(Pascomponent)
   const click=(cart_id,index)=>{
     setSpecificcart(cart_id)
@@ -38,12 +38,14 @@ const Home = () => {
  setFilteredProducts(filterProducts());
 }, [itemfilter, products])
   return (
-    <div className='w-[100vw]'>
+    <div className='w-[100vw] bg-[#fcf8ef]'>
       <Navbar />
-      <div className='md:pt-[80px] min-h-[60vh] w-[100vw] bg-[#fcf8ef] flex justify-evenly flex-wrap gap-y-5'>
-       {filteredProducts.map((cart,index)=>{
+      <div className='pt-[80px] min-h-[60vh] w-[100vw] bg-[#fcf8ef] flex justify-evenly flex-wrap gap-y-6'>
+       {filteredProducts.filter((cart)=>{
+        return search.toLowerCase()==""?cart:cart.name.toLowerCase().includes(search);
+       }).map((cart,index)=>{
         return (
-          <div key={cart.id} className='w-[300px] h-[300px] border-solid border-[1px] border-black rounded'>
+          <div key={cart.id} className='w-[300px] h-[300px] bg-[#ede4e4]  rounded shadow-xl'>
           <div className='flex w-[300px] h-[150px] justify-center items-center'>
             <div className=' w-[120px] h-[120px] overflow-hidden'>
            <img className='object-contain w-full h-full' src={cart.image} alt="" />

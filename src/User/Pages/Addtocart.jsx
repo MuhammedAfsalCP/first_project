@@ -5,58 +5,72 @@ import { Pascomponent } from '../../App'
 import axios from 'axios'
 
 const Addtocart =  () => {
-  const {userid,user,cartview,increament,decreament}=useContext(Pascomponent)
+  const {cartview,increament,decreament,totalamount,totalQuantity,spesificdelete,payment}=useContext(Pascomponent)
   
   
     
   
   
   return (
+   
     <div>
-      <Navbar />
-      <div className='md:pt-[80px] md:mb-[60px] min-h-[70vh] w-[100vw] bg-[#fcf8ef] flex justify-center items-center'>
-        <div>
-          {cartview.map((x)=>{
-            return (<div key={x.id} className='w-[70vw] bg-white flex items-center justify-center'>
-            <div className='w-[15vw] h-[150px]'>
-        <img className='object-contain w-full h-full' src={x.image} alt="" />
+  <Navbar />
+  
+  <div className='pt-[80px] pb-[60px] min-h-[70vh] w-full bg-[#fcf8ef] flex flex-col items-center'>
+    <div className='w-full max-w-screen-lg bg-white p-4 rounded-lg shadow-md'>
+      {cartview.map((x) => (
+        <div key={x.id} className='flex flex-col md:flex-row items-center justify-between border-b border-gray-300 py-4 px-2'>
+          
+          {/* Image Section */}
+          <div className='w-full md:w-[15vw] h-[150px] flex justify-center'>
+            <img className='object-contain w-full h-full' src={x.image} alt={x.name} />
+          </div>
+          
+          {/* Details Section */}
+          <div className='w-full md:w-[55vw] flex flex-col md:flex-row justify-between items-center gap-4'>
+            
+            {/* Product Info */}
+            <div className='w-full md:w-[25vw] flex flex-col md:flex-row justify-between items-center gap-2'>
+              <h1 className='text-lg font-semibold'>{x.name}</h1>
+              <h1 className='text-lg'>{x.weight}</h1>
             </div>
-            <div className='h-[200px] w-[55vw]  flex justify-center items-center gap-5'>
-              <div className='h-[150px] w-[25vw]  flex justify-center items-center flex-wrap'>
-                <div className='h-[75px] w-[25vw] flex justify-center items-center'>
-                  <h1>{x.name}</h1>
-                </div>
-                <div className='h-[75px] w-[25vw] flex justify-center items-start'> <h1>{x.weight}</h1></div>
-              </div>
-              <div className='h-[150px] w-[10vw]  flex justify-center items-center gap-4'>
-                <button onClick={()=>increament(x)} className='flex justify-center items-center'><box-icon name='plus'></box-icon></button>
-                <h1>{x.quantity}</h1>
-                <button onClick={()=>decreament(x)} className='flex justify-center items-center'><box-icon name='minus'></box-icon></button>
-              </div>
-              <div className='h-[150px] w-[10vw]  flex justify-center items-center'>
-              <h1>$ {x.total_price}</h1>
-              </div>
+            
+            {/* Quantity Controls */}
+            <div className='w-full md:w-[10vw] flex items-center justify-center gap-4'>
+              <button onClick={() => increament(x)} className='p-2 bg-gray-200 rounded'>
+                <box-icon name='plus' />
+              </button>
+              <h1 className='text-lg'>{x.quantity}</h1>
+              <button onClick={() => decreament(x)} className='p-2 bg-gray-200 rounded'>
+                <box-icon name='minus' />
+              </button>
             </div>
-          </div>)
-          })}
-
-          <div className='w-[70vw] h-[200px]  flex justify-end items-center'>
-            <div className='w-[20vw] h-[180px]  flex flex-wrap'>
-              <div className='w-[10vw] h-[90px]  flex justify-center items-center'>
-                <h1>items</h1>
-              </div>
-              <div className='w-[10vw] h-[90px]  flex justify-center items-center'>
-                <h1>total</h1>
-              </div>
-              <div className='w-[20vw] h-[90px] b flex justify-center items-center'>
-                <button className='w-[200px] h-[60px] bg-blue-600 rounded'>Pay</button>
-              </div>
+            
+            {/* Price and Delete */}
+            <div className='w-full md:w-[10vw] flex items-center justify-between gap-4'>
+              <h1 className='text-lg font-semibold'>${x.total_price}</h1>
+              <button onClick={()=>spesificdelete(x)} className='bg-red-500 text-white rounded px-2 py-1'>Delete</button>
             </div>
           </div>
         </div>
+      ))}
+
+      {/* Summary Section */}
+      <div className='w-full mt-6 flex flex-col md:flex-row justify-end items-center'>
+        <div className='flex flex-col md:flex-row items-center gap-4'>
+          <div className='flex flex-col md:flex-row items-center gap-4'>
+            <div className='text-lg font-semibold'>{totalQuantity}</div>
+            <div className='text-lg font-semibold'>{totalamount}</div>
+          </div>
+          <button onClick={payment} className='w-full md:w-[200px] h-[60px] bg-blue-600 text-white rounded mt-4 md:mt-0'>Place Order</button>
+        </div>
       </div>
-      <Footer />
     </div>
+  </div>
+  
+  <Footer />
+</div>
+
   )
 }
 
