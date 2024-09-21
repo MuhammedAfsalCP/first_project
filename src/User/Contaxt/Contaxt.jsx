@@ -394,8 +394,18 @@ const ContaxtForm = ({ children }) => {
     try {
       const response = await axios.get(`http://localhost:3000/register-details/${userid}`); // Fetch user data
       const detail = response.data;
-      toast.success("Payment Received"); // Show success message
-      navigate("/"); // Navigate to homepage
+      Swal.fire({
+        title: "Payment Received",
+        icon: "success",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Back To Home"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Show success message
+          navigate('/'); // Navigate to homepage
+        }
+      }); // Show success message
+       // Navigate to homepage
 
       const cartItems = detail.cart || []; // Get current cart items
       let orderedItems = detail.orderditems || []; // Get ordered items
@@ -419,12 +429,15 @@ const ContaxtForm = ({ children }) => {
       console.error('Error verifying the order:', error); // Log any errors
     }
   };
-
+  const click=(cart_id,index)=>{
+    setSpecificcart(cart_id)
+    navigate(`/${index}`)
+  }
 
 
   return (
     <div>
-      <Pascomponent.Provider value={{ search, setSearch, showname, setShowname, logout, verifyOrder, paymentview, setPaymentview, address, setaddress, addressmail, setaddressmail, addressname, setAddressname, Addresscheck, payment, spesificdelete, totalamount, setTotalamount, totalQuantity, setTotalquantity, decreament, setCartview, increament, cartadd, loginSubmit, handleSubmit, cartview, userid, setUserid, user, setUser, specificcart, setSpecificcart, filteredProducts, setFilteredProducts, itemfilter, setItemfilter, loginmail, setLoginmail, loginpass, setLoginpass, name, setName, email, setEmail, pass, setPass, confirm, setConfirm, verifyname, setVerifyname, verifyemail, setVerifyemail, verifypass, setVerifypass, verifyconfirm, setVerifyconfirm, storeemail, setStoreemail }}>
+      <Pascomponent.Provider value={{click, search, setSearch, showname, setShowname, logout, verifyOrder, paymentview, setPaymentview, address, setaddress, addressmail, setaddressmail, addressname, setAddressname, Addresscheck, payment, spesificdelete, totalamount, setTotalamount, totalQuantity, setTotalquantity, decreament, setCartview, increament, cartadd, loginSubmit, handleSubmit, cartview, userid, setUserid, user, setUser, specificcart, setSpecificcart, filteredProducts, setFilteredProducts, itemfilter, setItemfilter, loginmail, setLoginmail, loginpass, setLoginpass, name, setName, email, setEmail, pass, setPass, confirm, setConfirm, verifyname, setVerifyname, verifyemail, setVerifyemail, verifypass, setVerifypass, verifyconfirm, setVerifyconfirm, storeemail, setStoreemail }}>
         {children}
 
       </Pascomponent.Provider>

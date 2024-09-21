@@ -1,15 +1,6 @@
 {
   "register-details": [
-    {
-      "id": "04b7",
-      "name": "Afsal",
-      "email": "afsal@gmail.com",
-      "password": "afsal",
-      "cart": [],
-      "totalamount": 0,
-      "totalQuantity": 0,
-      "orderditems": []
-    }
+   
   ],
   "Prudocts": [
     {
