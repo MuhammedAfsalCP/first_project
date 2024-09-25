@@ -21,11 +21,14 @@ const ContaxtForm = ({ children }) => {
   const [loginpass, setLoginpass] = useState(""); // Login password
   const [showname, setShowname] = useState(""); // Name to display
   const [search, setSearch] = useState(""); // Search input
-
+  const [admin,setAdmin]=useState(false)
   //  cart and product management state
-  const [itemfilter, setItemfilter] = useState(null); // Item filter
-  const [filteredProducts, setFilteredProducts] = useState([]); // Filtered products
-  const [specificcart, setSpecificcart] = useState(""); // Specific cart item
+  const [itemfilter, setItemfilter] = useState(null);
+  const [userfilter, setUserfilter] = useState(null); // Item filter
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filtereduser, setFiltereduser] = useState([]); // Filtered products
+  const [specificcart, setSpecificcart] = useState("");
+  const [specificuser, setSpecificuser] = useState(""); // Specific cart item
   const [user, setUser] = useState(false); // User authentication status
   const [userid, setUserid] = useState(""); // User ID
   const [cartview, setCartview] = useState([]); // Cart items
@@ -102,7 +105,7 @@ const ContaxtForm = ({ children }) => {
       const response = await axios.get("http://localhost:3000/register-details"); // Fetch user data
       const check = response.data.find((x) => x.email === loginmail && x.password === loginpass); //  login validation
 
-      if (check) {
+      if (check&&check.admin!="true") {
         // If user is found, store user data in localStorage
         localStorage.setItem("user_Id", check.id);
         localStorage.setItem("user_name", check.name);
@@ -123,9 +126,14 @@ const ContaxtForm = ({ children }) => {
         setTotalamount(totamount);
         setShowname(shownamename);
         console.log(showname);
+        setAdmin(false)
         setUser(true); // User verified
         toast.success("Login Successfully"); // Show success message
         navigate('/'); // Navigate to homepage
+      }else if(check&&check.admin=="true"){
+        localStorage.setItem('admin', JSON.stringify(check));
+       setAdmin(true)
+        navigate('/');
       } else {
         toast.error("Invalid Email or Password"); // Show error message
       }
@@ -149,6 +157,7 @@ const ContaxtForm = ({ children }) => {
         setUserid(""); // Reset user ID state
         setCartview([]); // Clear cart view
         setUser(false); // Set user to logged out
+        setAdmin(false)
         toast.success("Successfully Logout"); // Show success message
         navigate('/'); // Navigate to homepage
       }
@@ -431,13 +440,19 @@ const ContaxtForm = ({ children }) => {
   };
   const click=(cart_id,index)=>{
     setSpecificcart(cart_id)
-    navigate(`/${index}`)
+    navigate(`/cart/${index}`)
   }
-
+//admin
+const userdetails=(cart_id,index)=>{
+  setSpecificuser(cart_id)
+  setUserfilter(true)
+  navigate(`/${index}`)
+}
+const [users, setUsers] = useState([]);
 
   return (
     <div>
-      <Pascomponent.Provider value={{click, search, setSearch, showname, setShowname, logout, verifyOrder, paymentview, setPaymentview, address, setaddress, addressmail, setaddressmail, addressname, setAddressname, Addresscheck, payment, spesificdelete, totalamount, setTotalamount, totalQuantity, setTotalquantity, decreament, setCartview, increament, cartadd, loginSubmit, handleSubmit, cartview, userid, setUserid, user, setUser, specificcart, setSpecificcart, filteredProducts, setFilteredProducts, itemfilter, setItemfilter, loginmail, setLoginmail, loginpass, setLoginpass, name, setName, email, setEmail, pass, setPass, confirm, setConfirm, verifyname, setVerifyname, verifyemail, setVerifyemail, verifypass, setVerifypass, verifyconfirm, setVerifyconfirm, storeemail, setStoreemail }}>
+      <Pascomponent.Provider value={{users, setUsers,userfilter, setUserfilter,filtereduser, setFiltereduser,specificuser, setSpecificuser,userdetails,admin,setAdmin,click, search, setSearch, showname, setShowname, logout, verifyOrder, paymentview, setPaymentview, address, setaddress, addressmail, setaddressmail, addressname, setAddressname, Addresscheck, payment, spesificdelete, totalamount, setTotalamount, totalQuantity, setTotalquantity, decreament, setCartview, increament, cartadd, loginSubmit, handleSubmit, cartview, userid, setUserid, user, setUser, specificcart, setSpecificcart, filteredProducts, setFilteredProducts, itemfilter, setItemfilter, loginmail, setLoginmail, loginpass, setLoginpass, name, setName, email, setEmail, pass, setPass, confirm, setConfirm, verifyname, setVerifyname, verifyemail, setVerifyemail, verifypass, setVerifypass, verifyconfirm, setVerifyconfirm, storeemail, setStoreemail }}>
         {children}
 
       </Pascomponent.Provider>

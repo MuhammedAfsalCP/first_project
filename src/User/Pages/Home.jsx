@@ -3,12 +3,20 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import { Pascomponent } from '../../App';
 import axios from 'axios';
+import AdminPanel from '../../Admin/AdminPanel';
 
 const Home = () => {
   const [products, setProducts] = useState([])
-  const {filteredProducts,setFilteredProducts,cartadd,search}=useContext(Pascomponent)
+  const {filteredProducts,setFilteredProducts,cartadd,search,admin,setAdmin}=useContext(Pascomponent)
   const {itemfilter,click}=useContext(Pascomponent)
- 
+  useEffect(()=>{
+     
+    const admin=localStorage.getItem("admin")
+    if(admin){
+      setAdmin(true)
+      
+    }
+  },[admin])
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -33,7 +41,8 @@ const Home = () => {
  setFilteredProducts(filterProducts());
 }, [itemfilter, products])
   return (
-    <div className='min-h-screen bg-[#fcf8ef]'>
+    <>
+    {admin?<AdminPanel/>:<div className='min-h-screen bg-[#fcf8ef]'>
       <Navbar />
       <div className='pt-[80px] min-h-[60vh] w-full flex flex-wrap justify-center gap-6 p-4'>
         {filteredProducts.filter((cart) => {
@@ -59,7 +68,8 @@ const Home = () => {
         })}
       </div>
       <Footer />
-    </div>
+    </div>}
+    </>
   );
 };
 

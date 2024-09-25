@@ -10,6 +10,9 @@ import Addtocart from './User/Pages/Addtocart'
 import Paymentsection from './User/Pages/Paymentsection'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AllProducts from './Admin/AllProducts'
+import Users from './Admin/Users'
+import UserDetail from './Admin/UserDetail'
 
 
 export const Pascomponent = React.createContext()
@@ -21,12 +24,16 @@ function App() {
       <ContaxtForm>
      
         <Routes>
-          <Route path='/' element={<Home />}/>
+          <Route path='/' element={<Home />}>
+          <Route path='AllProducts' element={<AllProducts/>}/>
+          <Route path='Users' element={<Users/>}/>
+          <Route path=':userId' element={<UserDetail/>}/>
+          </Route>
 
           <Route path='Signup' element={<Signup />} />
           <Route path='Login' element={<Login />} />
          
-         <Route path=':userId' element={<CartDetails/>}/>
+         <Route path='cart/:userId' element={<CartDetails/>}/>
          <Route path='AddtoCart' element={<Addtocart/>}/>
          <Route path='Payment' element={<Paymentsection/>}/>
         </Routes>
