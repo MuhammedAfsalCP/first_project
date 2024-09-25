@@ -426,7 +426,7 @@ const ContaxtForm = ({ children }) => {
       setTotalquantity(0); // Reset total quantity
 
       // Add ordered items to the user's data
-      orderedItems = [...orderedItems, { address, name: addressname, email: addressmail, items: cartItems }];
+      orderedItems = [...orderedItems, { address, name: addressname, email: addressmail, items: cartItems , Totalamount:totalamount,TotalQuantity:totalQuantity }];
 
       // Update user data in the json
       await axios.patch(`http://localhost:3000/register-details/${userid}`, { orderditems: orderedItems });
