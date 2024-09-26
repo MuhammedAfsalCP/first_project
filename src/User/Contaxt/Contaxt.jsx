@@ -60,7 +60,8 @@ const ContaxtForm = ({ children }) => {
         cart: [],
         totalamount: 0,
         totalQuantity: 0,
-        orderditems: []
+        orderditems: [],
+        Block: false
       });
       navigate('/Login'); // Navigate to login page
       // reset all states
@@ -170,7 +171,10 @@ const ContaxtForm = ({ children }) => {
       try {
         const response = await axios.get(`http://localhost:3000/register-details/${userid}`); // Fetch user data
         const detail = response.data;
-        let cartData = detail.cart || []; // Get current cart
+        let block=detail.Block
+       
+        if(block==false){
+          let cartData = detail.cart || []; // Get current cart
         let totalQuantity = detail.totalQuantity || 0; // Get total quantity
         let totalamount = detail.totalamount || 0; // Get total amount
 
@@ -200,6 +204,9 @@ const ContaxtForm = ({ children }) => {
         await axios.patch(`http://localhost:3000/register-details/${userid}`, { cart: cartData });
         await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalQuantity });
         await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalamount });
+        }else{
+          Swal.fire("Please contact admin");
+        }
       } catch (error) {
         console.error('Error updating cart:', error); // Log any errors
       }
@@ -450,9 +457,58 @@ const userdetails=(cart_id,index)=>{
 }
 const [users, setUsers] = useState([]);
 
+const edituser = async (user) => {
+ console.log(userid)// Replace with your actual user ID
+
+  Swal.fire({
+    title: user.name,
+   
+    showCancelButton: true,
+    showDenyButton: true,
+    showConfirmButton: true,
+    showCloseButton: true,
+    confirmButtonText: 'Block',
+    denyButtonText: 'Delete',
+    cancelButtonText: 'Unblock',
+    closeButtonHtml: 'x',
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      // Command for Option 1: Block the user
+      try {
+        await axios.patch(`http://localhost:3000/register-details/${user.id}`, { Block: true });
+       
+        location.reload();
+      } catch (error) {
+        
+      }
+    } else if (result.isDenied) {
+      // Command for Option 2: Delete the user
+      try {
+        await axios.delete(`http://localhost:3000/register-details/${user.id}`);
+        location.reload();
+        
+      } catch (error) {
+        
+      }
+    } else if (result.isDismissed && result.dismiss === Swal.DismissReason.cancel) {
+      // Command for Option 3: Unblock the user
+      try {
+        await axios.patch(`http://localhost:3000/register-details/${user.id}`, { Block: false });
+        location.reload();
+      } catch (error) {
+       
+      }
+    } else if (result.isDismissed && result.dismiss === Swal.DismissReason.close) {
+      // Command for Option 4: Close (no action)
+    
+    }
+  });
+};
+
+
   return (
     <div>
-      <Pascomponent.Provider value={{users, setUsers,userfilter, setUserfilter,filtereduser, setFiltereduser,specificuser, setSpecificuser,userdetails,admin,setAdmin,click, search, setSearch, showname, setShowname, logout, verifyOrder, paymentview, setPaymentview, address, setaddress, addressmail, setaddressmail, addressname, setAddressname, Addresscheck, payment, spesificdelete, totalamount, setTotalamount, totalQuantity, setTotalquantity, decreament, setCartview, increament, cartadd, loginSubmit, handleSubmit, cartview, userid, setUserid, user, setUser, specificcart, setSpecificcart, filteredProducts, setFilteredProducts, itemfilter, setItemfilter, loginmail, setLoginmail, loginpass, setLoginpass, name, setName, email, setEmail, pass, setPass, confirm, setConfirm, verifyname, setVerifyname, verifyemail, setVerifyemail, verifypass, setVerifypass, verifyconfirm, setVerifyconfirm, storeemail, setStoreemail }}>
+      <Pascomponent.Provider value={{edituser,users, setUsers,userfilter, setUserfilter,filtereduser, setFiltereduser,specificuser, setSpecificuser,userdetails,admin,setAdmin,click, search, setSearch, showname, setShowname, logout, verifyOrder, paymentview, setPaymentview, address, setaddress, addressmail, setaddressmail, addressname, setAddressname, Addresscheck, payment, spesificdelete, totalamount, setTotalamount, totalQuantity, setTotalquantity, decreament, setCartview, increament, cartadd, loginSubmit, handleSubmit, cartview, userid, setUserid, user, setUser, specificcart, setSpecificcart, filteredProducts, setFilteredProducts, itemfilter, setItemfilter, loginmail, setLoginmail, loginpass, setLoginpass, name, setName, email, setEmail, pass, setPass, confirm, setConfirm, verifyname, setVerifyname, verifyemail, setVerifyemail, verifypass, setVerifypass, verifyconfirm, setVerifyconfirm, storeemail, setStoreemail }}>
         {children}
 
       </Pascomponent.Provider>

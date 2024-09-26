@@ -4,7 +4,7 @@ import { Pascomponent } from '../App';
 
 const Users = () => {
   
- const {userdetails,filtereduser, setFiltereduser,userfilter,setUserfilter,users, setUsers}=useContext(Pascomponent)
+ const { setUserdetails,refresh,userdetails,edituser,filtereduser, setFiltereduser,userfilter,setUserfilter,users, setUsers}=useContext(Pascomponent)
 useEffect(() => {
   const fetchUsers = async () => {
     try {
@@ -18,7 +18,8 @@ useEffect(() => {
   };
 
  fetchUsers()
-}, []);  // Runs once when the component mounts
+}, []); 
+ // Runs once when the component mounts
 
 // If needed, you can track users changes with this effect
  // This effect will run when 'users' changes
@@ -31,7 +32,7 @@ useEffect(() => {
       className='w-full sm:w-72 md:w-80 bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300 relative'
     >
       {/* Edit Icon in Top-Right Corner */}
-      <span className='absolute top-3 right-3 text-gray-500 hover:text-gray-700 cursor-pointer'>
+      <span className='absolute top-3 right-3 text-gray-500 hover:text-gray-700 cursor-pointer' onClick={()=>edituser(user)}>
         <box-icon type='solid' name='edit-alt' size='md'></box-icon>
       </span>
 
@@ -46,6 +47,8 @@ useEffect(() => {
         </div>
         <h1 className='text-lg font-semibold text-gray-800'>{user.name}</h1>
         <h2 className='text-md text-gray-500'>Email: {user.email}</h2>
+        <h2 className='text-md text-gray-500'>Status: {user.Block?"Blocked":"Active"}</h2>
+        
       </div>
 
       {/* Button */}

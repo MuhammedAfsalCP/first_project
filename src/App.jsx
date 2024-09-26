@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AllProducts from './Admin/AllProducts'
 import Users from './Admin/Users'
 import UserDetail from './Admin/UserDetail'
+import DashBoard from './Admin/DashBoard'
 
 
 export const Pascomponent = React.createContext()
@@ -27,6 +28,7 @@ function App() {
           <Route path='/' element={<Home />}>
           <Route path='AllProducts' element={<AllProducts/>}/>
           <Route path='Users' element={<Users/>}/>
+          <Route path='Dashboard' element={<DashBoard/>}/>
           <Route path=':userId' element={<UserDetail/>}/>
           </Route>
 
