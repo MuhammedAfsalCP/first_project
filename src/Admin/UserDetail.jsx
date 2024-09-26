@@ -79,7 +79,7 @@ const UserDetail = () => {
   {user.map((x, userIndex) => {
     return (
       <div key={userIndex} className="w-full">
-        {x.cart.map((item, itemIndex) => {
+        {x.cart.map((item, itemInde) => {
           return (
             <div key={itemIndex} className="w-full h-auto p-4 bg-white shadow-lg rounded-lg m-2 flex flex-col md:flex-row">
               {/* Image section */}
