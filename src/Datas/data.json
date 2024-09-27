@@ -250,7 +250,26 @@
       ],
       "stock": 100,
       "rating": 4.7,
-      "image": "https://m.media-amazon.com/images/I/414uRei9j4L.jpg"
+      "image": "https://m.media-amazon.com/images/I/414uRei9j4L.jpg",
+      "editProduct": {
+        "id": "1",
+        "name": "Premium Dog Food - Chicken Flavor",
+        "category": "Dog Food",
+        "price": "25",
+        "description": "High-quality dog food with real chicken for optimal nutrition and flavor.",
+        "brand": "PawBest",
+        "weight": "5 kg",
+        "ingredients": [
+          "Chicken",
+          "Rice",
+          "Oats",
+          "Vegetable Oil",
+          "Vitamins"
+        ],
+        "stock": 100,
+        "rating": 4.7,
+        "image": "https://m.media-amazon.com/images/I/414uRei9j4L.jpg"
+      }
     },
     {
       "id": "2",

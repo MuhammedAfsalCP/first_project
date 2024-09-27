@@ -12,12 +12,14 @@
   "dependencies": {
     "ajax": "^0.0.4",
     "axios": "^1.7.7",
+    "formik": "^2.4.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
     "react-toastify": "^10.0.5",
     "sweetalert2": "^11.14.0",
-    "toastify-js": "^1.12.0"
+    "toastify-js": "^1.12.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

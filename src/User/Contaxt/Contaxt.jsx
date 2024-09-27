@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2'
 import 'react-toastify/dist/ReactToastify.css';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import axios from 'axios'
 const ContaxtForm = ({ children }) => {
   //  managing user input and application state
@@ -21,7 +23,7 @@ const ContaxtForm = ({ children }) => {
   const [loginpass, setLoginpass] = useState(""); // Login password
   const [showname, setShowname] = useState(""); // Name to display
   const [search, setSearch] = useState(""); // Search input
-  const [admin,setAdmin]=useState(false)
+  const [admin, setAdmin] = useState(false)
   //  cart and product management state
   const [itemfilter, setItemfilter] = useState(null);
   const [userfilter, setUserfilter] = useState(null); // Item filter
@@ -34,7 +36,7 @@ const ContaxtForm = ({ children }) => {
   const [cartview, setCartview] = useState([]); // Cart items
   const [totalQuantity, setTotalquantity] = useState(0); // Total items in cart
   const [totalamount, setTotalamount] = useState(0); // Total amount in cart
- 
+
   const navigate = useNavigate(); // navigation
 
   // registration detail check
@@ -106,7 +108,7 @@ const ContaxtForm = ({ children }) => {
       const response = await axios.get("http://localhost:3000/register-details"); // Fetch user data
       const check = response.data.find((x) => x.email === loginmail && x.password === loginpass); //  login validation
 
-      if (check&&check.admin!="true") {
+      if (check && check.admin != "true") {
         // If user is found, store user data in localStorage
         localStorage.setItem("user_Id", check.id);
         localStorage.setItem("user_name", check.name);
@@ -126,14 +128,14 @@ const ContaxtForm = ({ children }) => {
         setTotalquantity(totquantiy);
         setTotalamount(totamount);
         setShowname(shownamename);
-        
+
         setAdmin(false)
         setUser(true); // User verified
         toast.success("Login Successfully"); // Show success message
         navigate('/'); // Navigate to homepage
-      }else if(check&&check.admin=="true"){
+      } else if (check && check.admin == "true") {
         localStorage.setItem('admin', JSON.stringify(check));
-       setAdmin(true)
+        setAdmin(true)
         navigate('/');
       } else {
         toast.error("Invalid Email or Password"); // Show error message
@@ -171,42 +173,42 @@ const ContaxtForm = ({ children }) => {
     if (user) { // Check if user is authenticated
       try {
         const response = await axios.get(`http://localhost:3000/register-details/${userid}`);
-         // Fetch user data
+        // Fetch user data
         const detail = response.data;
-        let block=detail.Block
-       
-        if(block==false){
+        let block = detail.Block
+
+        if (block == false) {
           let cartData = detail.cart || []; // Get current cart
-        let totalQuantity = detail.totalQuantity || 0; // Get total quantity
-        let totalamount = detail.totalamount || 0; // Get total amount
+          let totalQuantity = detail.totalQuantity || 0; // Get total quantity
+          let totalamount = detail.totalamount || 0; // Get total amount
 
-        // item checking
-        const itemExist = cartData.find(cartItem => cartItem.id === item.id);
-        if (itemExist) {
-          toast.error("Already Item Existing", {
-            autoClose: 5000,
-          });
+          // item checking
+          const itemExist = cartData.find(cartItem => cartItem.id === item.id);
+          if (itemExist) {
+            toast.error("Already Item Existing", {
+              autoClose: 5000,
+            });
+          } else {
+            // Add new item to the cart
+            cartData = [...cartData, { ...item, quantity: 1, total_price: item.price }];
+            totalQuantity += 1; // Increment total quantity
+            totalamount += item.price; // Add item price to total amount
+            toast.success("Item Added"); // Show success message
+          }
+
+          // Update state and localStorage
+          setCartview(cartData);
+          setTotalquantity(totalQuantity);
+          setTotalamount(totalamount);
+          localStorage.setItem('cart', JSON.stringify(cartData));
+          localStorage.setItem('totalquantity', JSON.stringify(totalQuantity));
+          localStorage.setItem('totalamount', JSON.stringify(totalamount));
+
+          // Update user data in json
+          await axios.patch(`http://localhost:3000/register-details/${userid}`, { cart: cartData });
+          await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalQuantity });
+          await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalamount });
         } else {
-          // Add new item to the cart
-          cartData = [...cartData, { ...item, quantity: 1, total_price: item.price }];
-          totalQuantity += 1; // Increment total quantity
-          totalamount += item.price; // Add item price to total amount
-          toast.success("Item Added"); // Show success message
-        }
-
-        // Update state and localStorage
-        setCartview(cartData);
-        setTotalquantity(totalQuantity);
-        setTotalamount(totalamount);
-        localStorage.setItem('cart', JSON.stringify(cartData));
-        localStorage.setItem('totalquantity', JSON.stringify(totalQuantity));
-        localStorage.setItem('totalamount', JSON.stringify(totalamount));
-
-        // Update user data in json
-        await axios.patch(`http://localhost:3000/register-details/${userid}`, { cart: cartData });
-        await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalQuantity });
-        await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalamount });
-        }else{
           Swal.fire("Please contact admin");
         }
       } catch (error) {
@@ -412,13 +414,13 @@ const ContaxtForm = ({ children }) => {
     try {
       const response = await axios.get(`http://localhost:3000/register-details/${userid}`);
       const response2 = await axios.get(`http://localhost:3000/orders/earnings`);
-      const detail2=response2.data
-     const inc=detail2.earning+totalamount
-    
-     console.log(inc)
-     
-     
-         // Fetch user data
+      const detail2 = response2.data
+      const inc = detail2.earning + totalamount
+
+      console.log(inc)
+
+
+      // Fetch user data
       const detail = response.data;
       Swal.fire({
         title: "Payment Received",
@@ -431,7 +433,7 @@ const ContaxtForm = ({ children }) => {
           navigate('/'); // Navigate to homepage
         }
       }); // Show success message
-       // Navigate to homepage
+      // Navigate to homepage
 
       const cartItems = detail.cart || []; // Get current cart items
       let orderedItems = detail.orderditems || []; // Get ordered items
@@ -443,14 +445,14 @@ const ContaxtForm = ({ children }) => {
       setTotalquantity(0); // Reset total quantity
 
       // Add ordered items to the user's data
-      orderedItems = [...orderedItems, { address, name: addressname, email: addressmail, items: cartItems , Totalamount:totalamount,TotalQuantity:totalQuantity }];
+      orderedItems = [...orderedItems, { address, name: addressname, email: addressmail, items: cartItems, Totalamount: totalamount, TotalQuantity: totalQuantity }];
 
       // Update user data in the json
       await axios.patch(`http://localhost:3000/register-details/${userid}`, { orderditems: orderedItems });
       await axios.patch(`http://localhost:3000/orders/earnings`, { earning: inc });
-      
+
       await axios.patch(`http://localhost:3000/register-details/${userid}`, { cart: [] });
-      await axios.post(`http://localhost:3000/orders`,{order :totalQuantity})
+      await axios.post(`http://localhost:3000/orders`, { order: totalQuantity })
       await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalQuantity: 0 });
       await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalamount: 0 });
       console.log('Order verified and updated successfully'); // Log success
@@ -458,96 +460,107 @@ const ContaxtForm = ({ children }) => {
       console.error('Error verifying the order:', error); // Log any errors
     }
   };
-  const click=(cart_id,index)=>{
+  const click = (cart_id, index) => {
     setSpecificcart(cart_id)
     navigate(`/cart/${index}`)
   }
-//admin
-const userdetails=(cart_id,index)=>{
-  setSpecificuser(cart_id)
-  setUserfilter(true)
-  navigate(`/${index}`)
-}
-const [users, setUsers] = useState([]);
-const [check,setCheck]=useState(false)
+  //admin
+  // find user details navigate
+  const userdetails = (cart_id, index) => {
+    setSpecificuser(cart_id); 
+    setUserfilter(true); // set user true
+    navigate(`/${index}`); 
+  }
 
-  
-const edituser = async (user) => {
-  // Show SweetAlert confirmation dialog
-  Swal.fire({
-    title: user.name,
-    showCancelButton: true,
-    showDenyButton: true,
-    showConfirmButton: true,
-    showCloseButton: true,
-    confirmButtonText: 'Block',
-    denyButtonText: 'Delete',
-    cancelButtonText: 'Unblock',
-    closeButtonHtml: 'x',
-  }).then(async (result) => {
-    if (result.isConfirmed) {
-      // Block the user
-      try {
-        await axios.patch(`http://localhost:3000/register-details/${user.id}`, { Block: true });
-        console.log(`User ${user.id} blocked successfully.`);
-        await refreshUserData(); // Refresh user data
-      } catch (error) {
-        console.error("Error blocking user:", error);
+  const [users, setUsers] = useState([]); // save user data
+
+  // user edit
+  const edituser = async (user) => {
+    // pop up edit
+    Swal.fire({
+      title: user.name,
+      showCancelButton: true, 
+      showDenyButton: true,
+      showConfirmButton: true, 
+      showCloseButton: true, 
+      confirmButtonText: 'Block', 
+      denyButtonText: 'Delete',
+      cancelButtonText: 'Unblock',
+      closeButtonHtml: 'x',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        // block buttun clicked
+        try {
+          // block true set
+          await axios.patch(`http://localhost:3000/register-details/${user.id}`, { Block: true });
+         
+          await refreshUserData(); // data refresh
+        } catch (error) {
+          console.error("Error blocking user:", error); 
+        }
+      } else if (result.isDenied) {
+        // delete button clicked
+        try {
+          // deleting user
+          await axios.delete(`http://localhost:3000/register-details/${user.id}`);
+          setUsers((prevUsers) => prevUsers.filter((x) => x.id !== user.id)); // state update remove deleted user
+        
+        } catch (error) {
+          console.error("Error deleting user:", error);
+        }
+      } else if (result.isDismissed && result.dismiss === Swal.DismissReason.cancel) {
+        // un block button clicked
+        try {
+          // setblock false
+          await axios.patch(`http://localhost:3000/register-details/${user.id}`, { Block: false });
+         
+          await refreshUserData(); // data refresh
+        } catch (error) {
+          console.error("Error unblocking user:", error); // Log any errors
+        }
       }
-    } else if (result.isDenied) {
-      // Delete the user
-      try {
-        await axios.delete(`http://localhost:3000/register-details/${user.id}`);
-        setUsers((prevUsers) => prevUsers.filter((x) => x.id !== user.id));
-        console.log(`User ${user.id} deleted successfully.`);
-      } catch (error) {
-        console.error("Error deleting user:", error);
-      }
-    } else if (result.isDismissed && result.dismiss === Swal.DismissReason.cancel) {
-      // Unblock the user
-      try {
-        await axios.patch(`http://localhost:3000/register-details/${user.id}`, { Block: false });
-        console.log(`User ${user.id} unblocked successfully.`);
-        await refreshUserData(); // Refresh user data
-      } catch (error) {
-        console.error("Error unblocking user:", error);
-      }
+    });
+  };
+
+  // refresh function
+  const refreshUserData = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/register-details'); // getting all users
+
+      // filtering non admin users
+      const nonAdminUsers = response.data.filter(user => !user.admin); 
+
+      setUsers(nonAdminUsers); // filter data set users
+    
+    } catch (error) {
+      console.error("Error refreshing user data:", error); // Log any errors
     }
-  });
-};
+  };
 
-// Function to refresh user data from the server
-const refreshUserData = async () => {
-  try {
-    const response = await axios.get('http://localhost:3000/register-details');
-    
-    // Filter out admin users (assuming they have a role property)
-    const nonAdminUsers = response.data.filter(user => !user.admin); // Adjust this based on your actual property
-    
-    setUsers(nonAdminUsers); // Update the users state with the filtered data
-    console.log("User data refreshed successfully.");
-  } catch (error) {
-    console.error("Error refreshing user data:", error);
+  const [products, setProducts] = useState([]); // product state
+
+  // product delete
+  const productdelete = async (item) => {
+    try {
+      
+      // deleting the product
+      await axios.delete(`http://localhost:3000/Prudocts/${item.id}`);
+      // state updating
+      setProducts((prevUsers) => prevUsers.filter((x) => x.id !== item.id));
+     
+    } catch (error) {
+      console.error("Error deleting user:", error); 
+    }
   }
-};
-const [products, setProducts] = useState([])
-const productdelete=async(item)=>{
-  try {
-    await axios.delete(`http://localhost:3000/Prudocts/${item.id}`);
-    setProducts((prevUsers) => prevUsers.filter((x) => x.id !== user.id));
-    console.log(`User ${user.id} deleted successfully.`);
-  } catch (error) {
-    console.error("Error deleting user:", error);
-  }
-}
 
-
+  // editing pop up state set
+  const [showModal, setShowModal] = useState(false); 
 
 
 
   return (
     <div>
-      <Pascomponent.Provider value={{productdelete,products, setProducts,edituser,users, setUsers,userfilter, setUserfilter,filtereduser, setFiltereduser,specificuser, setSpecificuser,userdetails,admin,setAdmin,click, search, setSearch, showname, setShowname, logout, verifyOrder, paymentview, setPaymentview, address, setaddress, addressmail, setaddressmail, addressname, setAddressname, Addresscheck, payment, spesificdelete, totalamount, setTotalamount, totalQuantity, setTotalquantity, decreament, setCartview, increament, cartadd, loginSubmit, handleSubmit, cartview, userid, setUserid, user, setUser, specificcart, setSpecificcart, filteredProducts, setFilteredProducts, itemfilter, setItemfilter, loginmail, setLoginmail, loginpass, setLoginpass, name, setName, email, setEmail, pass, setPass, confirm, setConfirm, verifyname, setVerifyname, verifyemail, setVerifyemail, verifypass, setVerifypass, verifyconfirm, setVerifyconfirm, storeemail, setStoreemail }}>
+      <Pascomponent.Provider value={{ showModal, setShowModal, productdelete, products, setProducts, edituser, users, setUsers, userfilter, setUserfilter, filtereduser, setFiltereduser, specificuser, setSpecificuser, userdetails, admin, setAdmin, click, search, setSearch, showname, setShowname, logout, verifyOrder, paymentview, setPaymentview, address, setaddress, addressmail, setaddressmail, addressname, setAddressname, Addresscheck, payment, spesificdelete, totalamount, setTotalamount, totalQuantity, setTotalquantity, decreament, setCartview, increament, cartadd, loginSubmit, handleSubmit, cartview, userid, setUserid, user, setUser, specificcart, setSpecificcart, filteredProducts, setFilteredProducts, itemfilter, setItemfilter, loginmail, setLoginmail, loginpass, setLoginpass, name, setName, email, setEmail, pass, setPass, confirm, setConfirm, verifyname, setVerifyname, verifyemail, setVerifyemail, verifypass, setVerifypass, verifyconfirm, setVerifyconfirm, storeemail, setStoreemail }}>
         {children}
 
       </Pascomponent.Provider>
