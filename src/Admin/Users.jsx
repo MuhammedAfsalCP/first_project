@@ -4,7 +4,7 @@ import { Pascomponent } from '../App';
 
 const Users = () => {
   
- const { setUserdetails,refresh,userdetails,edituser,filtereduser, setFiltereduser,userfilter,setUserfilter,users, setUsers}=useContext(Pascomponent)
+ const {check, setUserdetails,refresh,userdetails,edituser,filtereduser, setFiltereduser,userfilter,setUserfilter,users, setUsers}=useContext(Pascomponent)
 useEffect(() => {
   const fetchUsers = async () => {
     try {
@@ -18,7 +18,7 @@ useEffect(() => {
   };
 
  fetchUsers()
-}, []); 
+}, [setUsers]); 
  // Runs once when the component mounts
 
 // If needed, you can track users changes with this effect

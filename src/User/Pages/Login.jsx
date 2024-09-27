@@ -15,13 +15,13 @@ const Login = () => {
         {/* Email Input */}
         <div className='flex flex-col'>
           <label className='font-semibold text-lg mb-2'>Enter Your E-mail</label>
-          <input value={loginmail} onChange={(e) => setLoginmail(e.target.value)} className='outline-none p-3 bg-transparent border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300'  type='email'  placeholder='Enter your email' required/>
+          <input  onChange={(e) => setLoginmail(e.target.value)} className='outline-none p-3 bg-transparent border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300'  type='email'  placeholder='Enter your email' required/>
         </div>
 
         {/* Password Input */}
         <div className='flex flex-col'>
           <label className='font-semibold text-lg mb-2'>Enter Your Password</label>
-          <input value={loginpass} onChange={(e) => setLoginpass(e.target.value)}  className='outline-none p-3 bg-transparent border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300' type='password' placeholder='Enter your password' required/>
+          <input  onChange={(e) => setLoginpass(e.target.value)}  className='outline-none p-3 bg-transparent border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300' type='password' placeholder='Enter your password' required/>
         </div>
 
         {/* Submit Button */}

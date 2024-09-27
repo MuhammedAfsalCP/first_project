@@ -18,26 +18,26 @@ const Signup = () => {
         {/* Name Input */}
         <div className='flex flex-col'>
           <label className='text-base md:text-lg lg:text-xl font-semibold'>Enter Your Name<span className={`ml-3 ${verifyname === null ? 'hidden' : 'inline-block'}`}> <box-icon name={verifyname ? 'check' : 'error'} color={verifyname ? '#14b30e' : '#ff0000'}></box-icon> </span></label>
-          <input id='name' value={name} onChange={(e) => setName(e.target.value)} className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300' type='text' placeholder='Enter Name' required/>
+          <input id='name'  onChange={(e) => setName(e.target.value)} className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300' type='text' placeholder='Enter Name' required/>
         </div>
 
         {/* Email Input */}
         <div className='flex flex-col'>
           <label className='text-base md:text-lg lg:text-xl font-semibold'>
             Enter Your Email<span className={`ml-3 ${verifyemail === null ? 'hidden' : 'inline-block'}`}><box-icon name={verifyemail ? 'check' : 'error'} color={verifyemail ? '#14b30e' : '#ff0000'}></box-icon></span></label>
-          <input id='mail' value={email} onChange={(e) => setEmail(e.target.value)} className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300' type='email'  placeholder='Enter E-mail' required/>
+          <input id='mail'  onChange={(e) => setEmail(e.target.value)} className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300' type='email'  placeholder='Enter E-mail' required/>
         </div>
 
         {/* Password Input */}
         <div className='flex flex-col'>
           <label className='text-base md:text-lg lg:text-xl font-semibold'>Create a Password<span className={`ml-3 ${verifypass === null ? 'hidden' : 'inline-block'}`}><box-icon name={verifypass ? 'check' : 'error'} color={verifypass ? '#14b30e' : '#ff0000'}></box-icon></span></label>
-          <input id='password' value={pass} onChange={(e) => setPass(e.target.value)} className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300' type='password' placeholder='Enter Password' required/>
+          <input id='password'  onChange={(e) => setPass(e.target.value)} className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300' type='password' placeholder='Enter Password' required/>
         </div>
 
         {/* Confirm Password Input */}
         <div className='flex flex-col'>
           <label className='text-base md:text-lg lg:text-xl font-semibold'>Confirm Your Password<span className={`ml-3 ${verifyconfirm === null ? 'hidden' : 'inline-block'}`}><box-icon name={verifyconfirm ? 'check' : 'error'} color={verifyconfirm ? '#14b30e' : '#ff0000'}></box-icon></span></label>
-          <input id='confirm' value={confirm}  onChange={(e) => setConfirm(e.target.value)} className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300' type='password' placeholder='Re-Enter Password' required/>
+          <input id='confirm'   onChange={(e) => setConfirm(e.target.value)} className='mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300' type='password' placeholder='Re-Enter Password' required/>
         </div>
 
         {/* Submit Button */}

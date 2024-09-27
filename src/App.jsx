@@ -14,6 +14,7 @@ import AllProducts from './Admin/AllProducts'
 import Users from './Admin/Users'
 import UserDetail from './Admin/UserDetail'
 import DashBoard from './Admin/DashBoard'
+import Editproduct from './Admin/Editproduct'
 
 
 export const Pascomponent = React.createContext()
@@ -29,6 +30,7 @@ function App() {
           <Route path='AllProducts' element={<AllProducts/>}/>
           <Route path='Users' element={<Users/>}/>
           <Route path='Dashboard' element={<DashBoard/>}/>
+          <Route path='EditProducts' element={<Editproduct/>}/>
           <Route path=':userId' element={<UserDetail/>}/>
           </Route>
 

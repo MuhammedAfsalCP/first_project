@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { useContext } from 'react'
 import { Pascomponent } from '../App'
@@ -26,9 +26,9 @@ const AdminPanel = () => {
       <ul className="flex flex-col">
         <Link to={'Dashboard'} className="text-white p-4 hover:bg-[#34495E] cursor-pointer">Dashboard</Link>
         <Link to={'Users'}><li className="text-white p-4 hover:bg-[#34495E] cursor-pointer">Users</li></Link>
-        <li className="text-white p-4 hover:bg-[#34495E] cursor-pointer">Edit Products</li>
+        <Link to={'EditProducts'} className="text-white p-4 hover:bg-[#34495E] cursor-pointer">Edit Products</Link>
         <Link to={''}><li className="text-white p-4 hover:bg-[#34495E] cursor-pointer">Add Products</li></Link>
-        <Link to={'AllProducts'}><li className="text-white p-4 hover:bg-[#34495E] cursor-pointer">All Orders</li></Link>
+        <Link to={'AllProducts'}><li className="text-white p-4 hover:bg-[#34495E] cursor-pointer">All Products</li></Link>
       </ul>
     </div>
     

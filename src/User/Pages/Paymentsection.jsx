@@ -15,19 +15,19 @@ const Paymentsection = () => {
             {/* Name Input */}
             <div className='flex flex-col'>
               <label className='text-lg font-semibold mb-1'>Enter Your Name</label>
-              <input value={addressname} onChange={(e) => setAddressname(e.target.value)} type="text" placeholder='Enter Full Name' className='p-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500'/>
+              <input  onChange={(e) => setAddressname(e.target.value)} type="text" placeholder='Enter Full Name' className='p-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500'/>
             </div>
     
             {/* Email Input */}
             <div className='flex flex-col'>
               <label className='text-lg font-semibold mb-1'>Enter Your Email</label>
-              <input value={addressmail} onChange={(e) => setaddressmail(e.target.value)}  type="email"  placeholder='Enter your email' className='p-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500'/>
+              <input  onChange={(e) => setaddressmail(e.target.value)}  type="email"  placeholder='Enter your email' className='p-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500'/>
             </div>
     
             {/* Address Input */}
             <div className='flex flex-col'>
               <label className='text-lg font-semibold mb-1'>Enter Your Address</label>
-              <textarea value={address} onChange={(e) => setaddress(e.target.value)}  placeholder='Enter your address' className='p-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500' rows="4"/>
+              <textarea  onChange={(e) => setaddress(e.target.value)}  placeholder='Enter your address' className='p-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500' rows="4"/>
             </div>
     
             {/* Submit Button */}

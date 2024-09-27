@@ -3,7 +3,7 @@ import { Pascomponent } from '../App'
 import axios from 'axios';
 
 const AllProducts = () => {
-    const [products, setProducts] = useState([])
+  const {products, setProducts}=useContext(Pascomponent)
     useEffect(() => {
         const fetchProducts = async () => {
           try {
