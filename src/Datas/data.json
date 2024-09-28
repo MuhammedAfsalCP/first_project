@@ -2,7 +2,7 @@
   "orders": [
     {
       "id": "earnings",
-      "earning": 938.5
+      "earning": 1011
     },
     {
       "id": "e486",
@@ -136,6 +136,14 @@
     {
       "id": "5e30",
       "order": 22
+    },
+    {
+      "id": "5c50",
+      "order": 1
+    },
+    {
+      "id": "cbec",
+      "order": 3
     }
   ],
   "register-details": [
@@ -190,7 +198,7 @@
       "Block": false
     },
     {
-      "id": "601e",
+      "id": "5e07",
       "name": "afsal",
       "email": "afsal@gmail.com",
       "password": "afsal",
@@ -199,9 +207,9 @@
       "totalQuantity": 0,
       "orderditems": [
         {
-          "address": "uaysuaysuya",
+          "address": "afsalafsalafsal",
           "name": "afsal",
-          "email": "asgasah@gmail.com",
+          "email": "afsal@gmail.com",
           "items": [
             {
               "id": "1",
@@ -210,7 +218,7 @@
               "price": 20,
               "description": "High-quality dog food with real chicken for optimal nutrition and flavor.",
               "brand": "PawBest",
-              "weight": "5 kg",
+              "weight": "6 kg",
               "ingredients": [
                 "Chicken",
                 "Rice",
@@ -242,6 +250,35 @@
               },
               "quantity": 1,
               "total_price": 20
+            }
+          ],
+          "Totalamount": 20,
+          "TotalQuantity": 1
+        },
+        {
+          "address": "fagfasgas",
+          "name": "afsal",
+          "email": "afsal@gmail.com",
+          "items": [
+            {
+              "id": "3",
+              "name": "Organic Dog Treats - Peanut Butter Flavor",
+              "category": "Dog Food",
+              "price": 15,
+              "description": "Delicious organic peanut butter-flavored dog treats, perfect for training.",
+              "brand": "BarkOrganic",
+              "weight": "500g",
+              "ingredients": [
+                "Peanut Butter",
+                "Oat Flour",
+                "Honey",
+                "Coconut Oil"
+              ],
+              "stock": 150,
+              "rating": 4.9,
+              "image": "https://m.media-amazon.com/images/I/51uPyFGtRcL._AC_UF1000,1000_QL80_.jpg",
+              "quantity": 2,
+              "total_price": 30
             },
             {
               "id": "2",
@@ -265,139 +302,8 @@
               "total_price": 22.5
             }
           ],
-          "Totalamount": 42.5,
-          "TotalQuantity": 2
-        },
-        {
-          "address": "astgasgahsas",
-          "name": "afsal",
-          "email": "afsal@gmail.com",
-          "items": [
-            {
-              "id": "3",
-              "name": "Organic Dog Treats - Peanut Butter Flavor",
-              "category": "Dog Food",
-              "price": 15,
-              "description": "Delicious organic peanut butter-flavored dog treats, perfect for training.",
-              "brand": "BarkOrganic",
-              "weight": "500g",
-              "ingredients": [
-                "Peanut Butter",
-                "Oat Flour",
-                "Honey",
-                "Coconut Oil"
-              ],
-              "stock": 150,
-              "rating": 4.9,
-              "image": "https://m.media-amazon.com/images/I/51uPyFGtRcL._AC_UF1000,1000_QL80_.jpg",
-              "quantity": 1,
-              "total_price": 15
-            }
-          ],
-          "Totalamount": 15,
-          "TotalQuantity": 1
-        },
-        {
-          "address": "tfcydkgjyuhb",
-          "name": "yuioghu",
-          "email": "dhfy@gmail.com",
-          "items": [
-            {
-              "id": "6",
-              "name": "Kitten Food - Chicken & Fish",
-              "category": "Cat Food",
-              "price": 20,
-              "description": "Nutrient-dense food for growing kittens with chicken and fish.",
-              "brand": "MeowMix",
-              "weight": "2 kg",
-              "ingredients": [
-                "Chicken",
-                "Fish",
-                "Rice",
-                "Oats",
-                "Vitamins"
-              ],
-              "stock": 95,
-              "rating": 4.9,
-              "image": "https://www.bigbasket.com/media/uploads/p/l/40244193_2-wigglesin-kittibles-kitten-dry-food-chicken-tuna-under-1-year-aids-vision-healthy-skin-coat.jpg",
-              "quantity": 3,
-              "total_price": 60
-            },
-            {
-              "id": "5",
-              "name": "Senior Dog Food - Lamb & Rice",
-              "category": "Dog Food",
-              "price": 29,
-              "description": "Special formula for senior dogs with lamb and rice for easy digestion.",
-              "brand": "GoldenYears",
-              "weight": "6 kg",
-              "ingredients": [
-                "Lamb",
-                "Rice",
-                "Barley",
-                "Flaxseed",
-                "Vitamins"
-              ],
-              "stock": 75,
-              "rating": 4.8,
-              "image": "https://rukminim2.flixcart.com/image/850/1000/kbxzbm80/pet-food/w/s/z/3-dog-lamb-rice-adult-smartheart-original-imaft6kch2grnf5d.jpeg?q=90&crop=false",
-              "quantity": 1,
-              "total_price": 29
-            },
-            {
-              "id": "11",
-              "name": "Puppy Food - Chicken & Rice",
-              "category": "Dog Food",
-              "price": 24.5,
-              "description": "Specially formulated for puppies, with real chicken and rice for growth.",
-              "brand": "PuppyPro",
-              "weight": "4 kg",
-              "ingredients": [
-                "Chicken",
-                "Rice",
-                "Peas",
-                "Carrots",
-                "Vitamins"
-              ],
-              "stock": 85,
-              "rating": 4.9,
-              "image": "https://m.media-amazon.com/images/I/61Hm3sqBoIL._SY679_.jpg",
-              "quantity": 1,
-              "total_price": 24.5
-            }
-          ],
-          "Totalamount": 113.5,
-          "TotalQuantity": 5
-        },
-        {
-          "address": "Tavanur CHALAKKA PARAMBIL HOUSE",
-          "name": "MUHAMMED AFSAL C P",
-          "email": "wrrsfr@gmail.com",
-          "items": [
-            {
-              "id": "2",
-              "name": "Grain-Free Cat Food - Salmon & Tuna",
-              "category": "Cat Food",
-              "price": 22.5,
-              "description": "Grain-free cat food packed with omega-3 from salmon and tuna for a shiny coat.",
-              "brand": "Whiskers Delight",
-              "weight": "3 kg",
-              "ingredients": [
-                "Salmon",
-                "Tuna",
-                "Sweet Potato",
-                "Peas",
-                "Vitamins"
-              ],
-              "stock": 80,
-              "rating": 4.5,
-              "image": "https://m.media-amazon.com/images/I/51ze2L18u2L.jpg",
-              "quantity": 23,
-              "total_price": 517.5
-            }
-          ],
-          "Totalamount": 495,
-          "TotalQuantity": 22
+          "Totalamount": 52.5,
+          "TotalQuantity": 3
         }
       ],
       "Block": false

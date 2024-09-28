@@ -428,7 +428,7 @@ const ContaxtForm = ({ children }) => {
       const detail2 = response2.data
       const inc = detail2.earning + totalamount
 
-      console.log(inc)
+     
 
 
       // Fetch user data
@@ -466,7 +466,7 @@ const ContaxtForm = ({ children }) => {
       await axios.post(`http://localhost:3000/orders`, { order: totalQuantity })
       await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalQuantity: 0 });
       await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalamount: 0 });
-      console.log('Order verified and updated successfully'); // Log success
+     
     } catch (error) {
       console.error('Error verifying the order:', error); // Log any errors
     }

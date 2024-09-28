@@ -40,7 +40,7 @@ const UserDetail = () => {
             <div>
               <h1 className="text-xl font-bold text-gray-800">Name: {x.name}</h1>
               <h2 className="text-md text-gray-600">Email: {x.email}</h2>
-              <h3 className="text-md text-gray-500">Password: {x.password}</h3> 
+             
             </div>
           </div>
         ))}

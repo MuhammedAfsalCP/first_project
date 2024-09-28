@@ -16,7 +16,7 @@ const DashBoard = () => {
         // Filter out admin users
         const filteredUsers = response.data.filter((user) => user.admin !== "true");
         setUsers(filteredUsers); // Set non-admin users in context
-        console.log(filteredUsers); // Log filtered users for debugging
+       
       } catch (error) {
         console.error("Error fetching users:", error);
       }
@@ -24,7 +24,7 @@ const DashBoard = () => {
     fetchUsers();
   }, [setUsers]);
 
-  // Fetch products from the server
+  // rendering time products set state
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -37,7 +37,7 @@ const DashBoard = () => {
     fetchProducts();
   }, []);
 
-  // Fetch earnings data from the server
+  // rendering time earnings state set
   useEffect(() => {
     const fetchEarnings = async () => {
       try {
@@ -63,11 +63,11 @@ const DashBoard = () => {
     fetchOrders();
   }, []);
 
-  // Log products whenever the products state changes (for debugging)
+  // add product
   useEffect(() => {
     const productAdd = () => {
-      console.log(products); // Log products to console
-      return products; // Return products (not necessary to return)
+    
+      return products; // Return products 
     };
     productAdd();
   }, [products]);
