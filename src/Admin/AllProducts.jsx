@@ -37,6 +37,7 @@ const AllProducts = () => {
             <div className='flex flex-col items-center p-4'>
               <h1 className='text-lg font-semibold text-center'>{item.name}</h1>
               <h2 className='text-md text-gray-600'>Price = ${item.price}</h2>
+              <h2 className='text-md text-gray-600'>category = {item.category}</h2>
             </div>
           </div>
         )
