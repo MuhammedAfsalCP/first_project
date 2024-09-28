@@ -185,9 +185,16 @@ const ContaxtForm = ({ children }) => {
           // item checking
           const itemExist = cartData.find(cartItem => cartItem.id === item.id);
           if (itemExist) {
-            toast.error("Already Item Existing", {
+            toast.success("Item Already Added ,Quantity Increased ", {
               autoClose: 5000,
             });
+            cartData = cartData.map(cartItem =>
+              cartItem.id === item.id
+                ? { ...cartItem, quantity: (cartItem.quantity || 1) + 1, total_price: (cartItem.total_price || cartItem.price) + cartItem.price }
+                : cartItem
+            );
+            totalQuantity += 1; // Increment total quantity
+            totalamount += item.price;
           } else {
             // Add new item to the cart
             cartData = [...cartData, { ...item, quantity: 1, total_price: item.price }];
@@ -318,7 +325,7 @@ const ContaxtForm = ({ children }) => {
       let cartData = detail.cart || []; // Get current cart
       let totalQuantity = detail.totalQuantity; // Total quantity
       let totalamount = detail.totalamount; // Total amount
-
+     
       // Check if the item exists in the cart
       const itemExist = cartData.find(cartItem => cartItem.id === item.id);
 
@@ -330,7 +337,10 @@ const ContaxtForm = ({ children }) => {
             : cartItem
         );
         totalQuantity -= 1; // Decrement total quantity
-        totalamount -= item.price; // Subtract item price from total amount
+        totalamount -= item.price;
+        if(totalQuantity==0){
+          toast.error("Item Deleted")
+        } // Subtract item price from total amount
       } else {
         // If item does not exist, do nothing
         totalQuantity = totalQuantity; // Total quantity remains the same
@@ -339,7 +349,7 @@ const ContaxtForm = ({ children }) => {
 
       // Remove items with zero quantity
       cartData = cartData.filter(cartItem => cartItem.quantity > 0);
-
+      
       // Update state and localStorage
       setCartview(cartData);
       setTotalquantity(totalQuantity);
@@ -352,6 +362,7 @@ const ContaxtForm = ({ children }) => {
       await axios.patch(`http://localhost:3000/register-details/${userid}`, { cart: cartData });
       await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalQuantity });
       await axios.patch(`http://localhost:3000/register-details/${userid}`, { totalamount });
+      
     } catch (error) {
       console.error('Error updating cart:', error); // Log any errors
     }
@@ -362,7 +373,7 @@ const ContaxtForm = ({ children }) => {
     try {
       const response = await axios.get(`http://localhost:3000/register-details/${userid}`); // Fetch user data
       const detail = response.data;
-      toast.error("Delete The Item"); // Show delete message
+      toast.error("Item Deleted"); // Show delete message
 
       let cartData = detail.cart.filter((x) => x.id !== item.id); // Filter out the item to delete
 

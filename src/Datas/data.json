@@ -2,7 +2,7 @@
   "orders": [
     {
       "id": "earnings",
-      "earning": 87.5
+      "earning": 938.5
     },
     {
       "id": "e486",
@@ -96,6 +96,46 @@
           "total_price": 15
         }
       ]
+    },
+    {
+      "id": "b14f",
+      "order": 3
+    },
+    {
+      "id": "d544",
+      "order": 1
+    },
+    {
+      "id": "44b9",
+      "order": 2
+    },
+    {
+      "id": "1882",
+      "order": 1
+    },
+    {
+      "id": "aa10",
+      "order": 1
+    },
+    {
+      "id": "efe2",
+      "order": 2
+    },
+    {
+      "id": "7ca6",
+      "order": 1
+    },
+    {
+      "id": "99cd",
+      "order": 1
+    },
+    {
+      "id": "623a",
+      "order": 5
+    },
+    {
+      "id": "5e30",
+      "order": 22
     }
   ],
   "register-details": [
@@ -108,24 +148,66 @@
       "Block": false
     },
     {
-      "id": "0f2d",
+      "id": "b23e",
+      "name": "hlo",
+      "email": "hlo@gmail.com",
+      "password": "hlo123",
+      "cart": [],
+      "totalamount": 0,
+      "totalQuantity": 0,
+      "orderditems": [
+        {
+          "address": "asuaysuaysua",
+          "name": "hlo",
+          "email": "hlo@gmail.com",
+          "items": [
+            {
+              "id": "2",
+              "name": "Grain-Free Cat Food - Salmon & Tuna",
+              "category": "Cat Food",
+              "price": 22.5,
+              "description": "Grain-free cat food packed with omega-3 from salmon and tuna for a shiny coat.",
+              "brand": "Whiskers Delight",
+              "weight": "3 kg",
+              "ingredients": [
+                "Salmon",
+                "Tuna",
+                "Sweet Potato",
+                "Peas",
+                "Vitamins"
+              ],
+              "stock": 80,
+              "rating": 4.5,
+              "image": "https://m.media-amazon.com/images/I/51ze2L18u2L.jpg",
+              "quantity": 1,
+              "total_price": 22.5
+            }
+          ],
+          "Totalamount": 22.5,
+          "TotalQuantity": 1
+        }
+      ],
+      "Block": false
+    },
+    {
+      "id": "601e",
       "name": "afsal",
       "email": "afsal@gmail.com",
       "password": "afsal",
       "cart": [],
-      "totalamount": 40,
-      "totalQuantity": 2,
+      "totalamount": 0,
+      "totalQuantity": 0,
       "orderditems": [
         {
-          "address": "fdghjfghjhfgd",
-          "name": "sdjhgdhgfh",
-          "email": "gasdhddgfh@gmail.com",
+          "address": "uaysuaysuya",
+          "name": "afsal",
+          "email": "asgasah@gmail.com",
           "items": [
             {
               "id": "1",
               "name": "Premium Dog Food - Chicken Flavor",
               "category": "Dog Food",
-              "price": 25,
+              "price": 20,
               "description": "High-quality dog food with real chicken for optimal nutrition and flavor.",
               "brand": "PawBest",
               "weight": "5 kg",
@@ -139,8 +221,27 @@
               "stock": 100,
               "rating": 4.7,
               "image": "https://m.media-amazon.com/images/I/414uRei9j4L.jpg",
+              "editProduct": {
+                "id": "1",
+                "name": "Premium Dog Food - Chicken Flavor",
+                "category": "Dog Food",
+                "price": "25",
+                "description": "High-quality dog food with real chicken for optimal nutrition and flavor.",
+                "brand": "PawBest",
+                "weight": "5 kg",
+                "ingredients": [
+                  "Chicken",
+                  "Rice",
+                  "Oats",
+                  "Vegetable Oil",
+                  "Vitamins"
+                ],
+                "stock": 100,
+                "rating": 4.7,
+                "image": "https://m.media-amazon.com/images/I/414uRei9j4L.jpg"
+              },
               "quantity": 1,
-              "total_price": 25
+              "total_price": 20
             },
             {
               "id": "2",
@@ -164,35 +265,14 @@
               "total_price": 22.5
             }
           ],
-          "Totalamount": 47.5,
+          "Totalamount": 42.5,
           "TotalQuantity": 2
         },
         {
-          "address": "sghsgdhsgdstyud",
-          "name": "dhgjhdfjg",
-          "email": "dhsjhdsjk@gmail.com",
+          "address": "astgasgahsas",
+          "name": "afsal",
+          "email": "afsal@gmail.com",
           "items": [
-            {
-              "id": "1",
-              "name": "Premium Dog Food - Chicken Flavor",
-              "category": "Dog Food",
-              "price": 25,
-              "description": "High-quality dog food with real chicken for optimal nutrition and flavor.",
-              "brand": "PawBest",
-              "weight": "5 kg",
-              "ingredients": [
-                "Chicken",
-                "Rice",
-                "Oats",
-                "Vegetable Oil",
-                "Vitamins"
-              ],
-              "stock": 100,
-              "rating": 4.7,
-              "image": "https://m.media-amazon.com/images/I/414uRei9j4L.jpg",
-              "quantity": 1,
-              "total_price": 25
-            },
             {
               "id": "3",
               "name": "Organic Dog Treats - Peanut Butter Flavor",
@@ -214,21 +294,112 @@
               "total_price": 15
             }
           ],
-          "Totalamount": 40,
-          "TotalQuantity": 2
+          "Totalamount": 15,
+          "TotalQuantity": 1
+        },
+        {
+          "address": "tfcydkgjyuhb",
+          "name": "yuioghu",
+          "email": "dhfy@gmail.com",
+          "items": [
+            {
+              "id": "6",
+              "name": "Kitten Food - Chicken & Fish",
+              "category": "Cat Food",
+              "price": 20,
+              "description": "Nutrient-dense food for growing kittens with chicken and fish.",
+              "brand": "MeowMix",
+              "weight": "2 kg",
+              "ingredients": [
+                "Chicken",
+                "Fish",
+                "Rice",
+                "Oats",
+                "Vitamins"
+              ],
+              "stock": 95,
+              "rating": 4.9,
+              "image": "https://www.bigbasket.com/media/uploads/p/l/40244193_2-wigglesin-kittibles-kitten-dry-food-chicken-tuna-under-1-year-aids-vision-healthy-skin-coat.jpg",
+              "quantity": 3,
+              "total_price": 60
+            },
+            {
+              "id": "5",
+              "name": "Senior Dog Food - Lamb & Rice",
+              "category": "Dog Food",
+              "price": 29,
+              "description": "Special formula for senior dogs with lamb and rice for easy digestion.",
+              "brand": "GoldenYears",
+              "weight": "6 kg",
+              "ingredients": [
+                "Lamb",
+                "Rice",
+                "Barley",
+                "Flaxseed",
+                "Vitamins"
+              ],
+              "stock": 75,
+              "rating": 4.8,
+              "image": "https://rukminim2.flixcart.com/image/850/1000/kbxzbm80/pet-food/w/s/z/3-dog-lamb-rice-adult-smartheart-original-imaft6kch2grnf5d.jpeg?q=90&crop=false",
+              "quantity": 1,
+              "total_price": 29
+            },
+            {
+              "id": "11",
+              "name": "Puppy Food - Chicken & Rice",
+              "category": "Dog Food",
+              "price": 24.5,
+              "description": "Specially formulated for puppies, with real chicken and rice for growth.",
+              "brand": "PuppyPro",
+              "weight": "4 kg",
+              "ingredients": [
+                "Chicken",
+                "Rice",
+                "Peas",
+                "Carrots",
+                "Vitamins"
+              ],
+              "stock": 85,
+              "rating": 4.9,
+              "image": "https://m.media-amazon.com/images/I/61Hm3sqBoIL._SY679_.jpg",
+              "quantity": 1,
+              "total_price": 24.5
+            }
+          ],
+          "Totalamount": 113.5,
+          "TotalQuantity": 5
+        },
+        {
+          "address": "Tavanur CHALAKKA PARAMBIL HOUSE",
+          "name": "MUHAMMED AFSAL C P",
+          "email": "wrrsfr@gmail.com",
+          "items": [
+            {
+              "id": "2",
+              "name": "Grain-Free Cat Food - Salmon & Tuna",
+              "category": "Cat Food",
+              "price": 22.5,
+              "description": "Grain-free cat food packed with omega-3 from salmon and tuna for a shiny coat.",
+              "brand": "Whiskers Delight",
+              "weight": "3 kg",
+              "ingredients": [
+                "Salmon",
+                "Tuna",
+                "Sweet Potato",
+                "Peas",
+                "Vitamins"
+              ],
+              "stock": 80,
+              "rating": 4.5,
+              "image": "https://m.media-amazon.com/images/I/51ze2L18u2L.jpg",
+              "quantity": 23,
+              "total_price": 517.5
+            }
+          ],
+          "Totalamount": 495,
+          "TotalQuantity": 22
         }
       ],
-      "Block": false
-    },
-    {
-      "id": "b23e",
-      "name": "hlo",
-      "email": "hlo@gmail.com",
-      "password": "hlo123",
-      "cart": [],
-      "totalamount": 0,
-      "totalQuantity": 0,
-      "orderditems": [],
       "Block": false
     }
   ],
@@ -237,10 +408,10 @@
       "id": "1",
       "name": "Premium Dog Food - Chicken Flavor",
       "category": "Dog Food",
-      "price": 25,
+      "price": 20,
       "description": "High-quality dog food with real chicken for optimal nutrition and flavor.",
       "brand": "PawBest",
-      "weight": "5 kg",
+      "weight": "6 kg",
       "ingredients": [
         "Chicken",
         "Rice",

@@ -16,6 +16,7 @@ import UserDetail from './Admin/UserDetail'
 import DashBoard from './Admin/DashBoard'
 import Editproduct from './Admin/Editproduct'
 import AddProducts from './Admin/AddProducts'
+import Orders from './User/Pages/Orders'
 
 
 export const Pascomponent = React.createContext()
@@ -42,6 +43,7 @@ function App() {
          <Route path='cart/:userId' element={<CartDetails/>}/>
          <Route path='AddtoCart' element={<Addtocart/>}/>
          <Route path='Payment' element={<Paymentsection/>}/>
+         <Route path='Orders' element={<Orders/>}/>
         </Routes>
        
       </ContaxtForm>

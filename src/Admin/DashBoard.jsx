@@ -50,12 +50,12 @@ const DashBoard = () => {
     fetchEarnings();
   }, []);
 
-  // Fetch orders from the server
+  // renderning time order state set
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         const response = await axios.get("http://localhost:3000/orders");
-        setOrder(response.data); // Set orders state with fetched data
+        setOrder(response.data); //order data passing to satate
       } catch (error) {
         console.error("Error fetching orders:", error);
       }

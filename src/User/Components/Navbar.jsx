@@ -9,7 +9,7 @@ const Navbar = () => {
   const toggleNavebar=()=>{
     setIsOpen(!isOpen)
   }
-  const {itemfilter,setItemfilter,user,setUser,setUserid,userid,setCartview,totalQuantity,logout,setSearch,showname,setShowname}=useContext(Pascomponent)
+  const {cartview,itemfilter,setItemfilter,user,setUser,setUserid,userid,setCartview,totalQuantity,logout,setSearch,showname,setShowname}=useContext(Pascomponent)
   useEffect(()=>{
      
     const user=localStorage.getItem("user_Id")
@@ -62,10 +62,17 @@ const Navbar = () => {
                 <li>
                   <Link to={'/AddtoCart'} className='font-semibold text-xl hover:text-gray-500 flex items-center'>
                     <box-icon type='solid' name='cart'></box-icon>
-                    <span className='ml-1'>{totalQuantity}</span>
+                    <span className='ml-1'>{cartview.length}</span>
                   </Link>
                 </li>
                 <li>
+                  <Link to={'/Orders'} className='font-semibold text-xl hover:text-gray-500 flex items-center'>
+                   
+                    <span className='ml-1'>Orders</span>
+                  </Link>
+                </li>
+                <li>
+                  
                   <Link className='font-semibold text-xl hover:text-gray-500 flex items-center'>
                     <box-icon name='user-circle' type='solid'></box-icon>
                     <span className='ml-1'>{showname}</span>

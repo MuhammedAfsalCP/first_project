@@ -5,11 +5,11 @@ import * as Yup from 'yup';
 import { Pascomponent } from '../App';
 
 const EditProduct = () => {
-  // Extracting context values
+  // accessing contaxt
   const { products, setProducts, showModal, setShowModal,productdelete } = useContext(Pascomponent);
-  const [selectedProduct, setSelectedProduct] = useState(null); // State to hold the product being edited
+  const [selectedProduct, setSelectedProduct] = useState(null); // editing product state
 
-  // Formik setup for form handling and validation
+  // formik setting
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -31,17 +31,17 @@ const EditProduct = () => {
     }),
     onSubmit: async (values) => {
       try {
-        // Sending the updated product details to the server
+        // update server
         const response = await axios.patch(`http://localhost:3000/Prudocts/${selectedProduct.id}`, values);
         
-        // Updating the products state with the edited product
+        // state update
         setProducts((prevProducts) => 
           prevProducts.map((product) => 
             product.id === selectedProduct.id ? response.data : product
           )
         );
         
-        // Closing the modal and resetting the form
+        // editing form clossing
         setShowModal(false);
         setSelectedProduct(null);
         formik.resetForm();
@@ -51,10 +51,10 @@ const EditProduct = () => {
     }
   });
 
-  // Function to handle clicking the edit button
+  // editing function
   const handleEditClick = (item) => {
-    setSelectedProduct(item); // Set the selected product for editing
-    // Populate the form with the selected product's details
+    setSelectedProduct(item); // set editing product
+    //formik setting values
     formik.setValues({
       name: item.name,
       price: item.price,
@@ -64,15 +64,15 @@ const EditProduct = () => {
       category: item.category,
       image: item.image
     });
-    setShowModal(true); // Show the modal for editing
+    setShowModal(true); // editing form showing set
   };
 
-  // Effect to fetch products when the component mounts
+  // product details set
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get("http://localhost:3000/Prudocts");
-        setProducts(response.data); // Update products state with fetched data
+        setProducts(response.data); //upadate products
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -102,23 +102,13 @@ const EditProduct = () => {
 
           {/* Action Buttons */}
           <div className='flex justify-around p-4 border-t border-gray-200'>
-            <button 
-              className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors'
-              onClick={() => handleEditClick(item)} // Edit button click handler
-            >
-              Edit
-            </button>
-            <button 
-              className='px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors'
-              onClick={() => productdelete(item)} // Delete button click handler (ensure you have a productdelete function defined)
-            >
-              Delete
-            </button>
+            <button className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors' onClick={() => handleEditClick(item)}>Edit</button>
+            <button className='px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors'  onClick={() => productdelete(item)} >Delete</button>
           </div>
         </div>
       ))}
 
-      {/* Modal for editing product */}
+      {/* editing form */}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
@@ -128,109 +118,50 @@ const EditProduct = () => {
               {/* Form fields for product details */}
               <div className="mb-4">
                 <label className="block text-sm font-medium">Name</label>
-                <input 
-                  type="text" 
-                  name="name" 
-                  value={formik.values.name} 
-                  onChange={formik.handleChange} 
-                  onBlur={formik.handleBlur} 
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
+                <input  type="text"  name="name"  value={formik.values.name}  onChange={formik.handleChange}  className="w-full p-2 border border-gray-300 rounded"/>
                 {formik.touched.name && formik.errors.name ? <div className="text-red-500">{formik.errors.name}</div> : null}
               </div>
 
               <div className="mb-4">
                 <label className="block text-sm font-medium">Price</label>
-                <input 
-                  type="number" 
-                  name="price" 
-                  value={formik.values.price} 
-                  onChange={formik.handleChange} 
-                  onBlur={formik.handleBlur} 
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
+                <input  type="number"  name="price"  value={formik.values.price}  onChange={formik.handleChange}  className="w-full p-2 border border-gray-300 rounded"/>
                 {formik.touched.price && formik.errors.price ? <div className="text-red-500">{formik.errors.price}</div> : null}
               </div>
 
               <div className="mb-4">
                 <label className="block text-sm font-medium">Description</label>
-                <textarea 
-                  name="description" 
-                  value={formik.values.description} 
-                  onChange={formik.handleChange} 
-                  onBlur={formik.handleBlur} 
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
+                <textarea  name="description"  value={formik.values.description}  onChange={formik.handleChange}  className="w-full p-2 border border-gray-300 rounded"/>
                 {formik.touched.description && formik.errors.description ? <div className="text-red-500">{formik.errors.description}</div> : null}
               </div>
 
               <div className="mb-4">
                 <label className="block text-sm font-medium">Brand</label>
-                <input 
-                  type="text" 
-                  name="brand" 
-                  value={formik.values.brand} 
-                  onChange={formik.handleChange} 
-                  onBlur={formik.handleBlur} 
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
+                <input  type="text"  name="brand"  value={formik.values.brand}  onChange={formik.handleChange}  className="w-full p-2 border border-gray-300 rounded"/>
                 {formik.touched.brand && formik.errors.brand ? <div className="text-red-500">{formik.errors.brand}</div> : null}
               </div>
 
               <div className="mb-4">
                 <label className="block text-sm font-medium">Weight</label>
-                <input 
-                  type="text" 
-                  name="weight" 
-                  value={formik.values.weight} 
-                  onChange={formik.handleChange} 
-                  onBlur={formik.handleBlur} 
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
+                <input  type="text"  name="weight"  value={formik.values.weight}  onChange={formik.handleChange}  className="w-full p-2 border border-gray-300 rounded"/>
                 {formik.touched.weight && formik.errors.weight ? <div className="text-red-500">{formik.errors.weight}</div> : null}
               </div>
 
               <div className="mb-4">
                 <label className="block text-sm font-medium">Category</label>
-                <input 
-                  type="text" 
-                  name="category" 
-                  value={formik.values.category} 
-                  onChange={formik.handleChange} 
-                  onBlur={formik.handleBlur} 
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
+                <input  type="text"  name="category"  value={formik.values.category}  onChange={formik.handleChange}  className="w-full p-2 border border-gray-300 rounded"/>
                 {formik.touched.category && formik.errors.category ? <div className="text-red-500">{formik.errors.category}</div> : null}
               </div>
 
               <div className="mb-4">
                 <label className="block text-sm font-medium">Image URL</label>
-                <input 
-                  type="text" 
-                  name="image" 
-                  value={formik.values.image} 
-                  onChange={formik.handleChange} 
-                  onBlur={formik.handleBlur} 
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
+                <input  type="text"  name="image"  value={formik.values.image}  onChange={formik.handleChange}  className="w-full p-2 border border-gray-300 rounded"/>
                 {formik.touched.image && formik.errors.image ? <div className="text-red-500">{formik.errors.image}</div> : null}
               </div>
 
               {/* Cancel and Save buttons */}
               <div className="flex justify-end space-x-4">
-                <button 
-                  type="button" 
-                  className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600" 
-                  onClick={() => setShowModal(false)} // Cancel button handler
-                >
-                  Cancel
-                </button>
-                <button 
-                  type="submit" 
-                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                >
-                  Save
-                </button>
+                <button type="button" className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600" onClick={() => setShowModal(false)}>Cancel</button>
+                <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Save</button>
               </div>
             </form>
           </div>

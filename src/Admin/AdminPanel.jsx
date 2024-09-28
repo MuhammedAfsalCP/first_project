@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useContext } from 'react'
 import { Pascomponent } from '../App'
 import { Link, Outlet } from 'react-router-dom'
+import DashBoard from './DashBoard'
 
 
 const AdminPanel = () => {
@@ -30,8 +31,8 @@ const AdminPanel = () => {
     
     {/* Main Content Area */}
     <div className="bg-[#ECF0F1] w-[80%] h-[90vh] overflow-scroll p-6">
-      
-     <Outlet/>
+      {check?<DashBoard/>:<Outlet/>}
+     
       {/* Additional content goes here */}
     </div>
   </div>
