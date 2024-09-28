@@ -32,18 +32,21 @@ const AddProducts = () => {
       image: Yup.string().url('Invalid URL').required('Image URL is required')
     }),
     onSubmit: async (values, { resetForm }) => {
-      const id = String(products.length+1); // create id
-      const submit = { ...values, id }; // all details raping
+      const id = String(products.length + 1); // create id
+      const submit = { ...values, id }; // wrap all details
 
       try {
         await axios.post('http://localhost:3000/Prudocts', submit); // upload to server
-        resetForm(); // form resetting
-      
+        resetForm(); // reset form after submission
+        
+        // state update
+        setProducts([...products, submit]);
       } catch (error) {
         console.error('Error adding product:', error); 
       }
     }
   });
+
 
   // rendering time data storing
   useEffect(() => {
@@ -130,7 +133,11 @@ const AddProducts = () => {
         {/* Product Category */}
         <div className="mb-4">
           <label className="block text-sm font-medium">Category</label>
-          <input type="text" name="category" onChange={formik.handleChange} value={formik.values.category} className="w-full p-2 border border-gray-300 rounded"/>
+          <select name="category" onChange={formik.handleChange} value={formik.values.category} className="w-full p-2 border border-gray-300 rounded" >
+            <option value="">Select Category</option>
+            <option value="Cat Food">Cat Food</option>
+            <option value="Dog Food">Dog Food</option>
+          </select>
           {formik.touched.category && formik.errors.category ? (
             <div className="text-red-500">{formik.errors.category}</div>
           ) : null}

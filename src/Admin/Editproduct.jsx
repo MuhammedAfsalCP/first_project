@@ -11,7 +11,8 @@ const EditProduct = () => {
 
   // formik setting
   const formik = useFormik({
-    initialValues: {
+    enableReinitialize: true,
+    initialValues: selectedProduct || {
       name: '',
       price: '',
       description: '',
@@ -31,17 +32,12 @@ const EditProduct = () => {
     }),
     onSubmit: async (values) => {
       try {
-        // update server
         const response = await axios.patch(`http://localhost:3000/Prudocts/${selectedProduct.id}`, values);
-        
-        // state update
-        setProducts((prevProducts) => 
-          prevProducts.map((product) => 
+        setProducts((prevProducts) =>
+          prevProducts.map((product) =>
             product.id === selectedProduct.id ? response.data : product
           )
         );
-        
-        // editing form clossing
         setShowModal(false);
         setSelectedProduct(null);
         formik.resetForm();
@@ -145,13 +141,16 @@ const EditProduct = () => {
                 <input  type="text"  name="weight"  value={formik.values.weight}  onChange={formik.handleChange}  className="w-full p-2 border border-gray-300 rounded"/>
                 {formik.touched.weight && formik.errors.weight ? <div className="text-red-500">{formik.errors.weight}</div> : null}
               </div>
-
-              <div className="mb-4">
-                <label className="block text-sm font-medium">Category</label>
-                <input  type="text"  name="category"  value={formik.values.category}  onChange={formik.handleChange}  className="w-full p-2 border border-gray-300 rounded"/>
-                {formik.touched.category && formik.errors.category ? <div className="text-red-500">{formik.errors.category}</div> : null}
-              </div>
-
+               <div className="mb-4">
+          <label className="block text-sm font-medium">Category</label>
+          <select name="category" onChange={formik.handleChange} value={formik.values.category} className="w-full p-2 border border-gray-300 rounded" >
+            <option value="Cat Food">Cat Food</option>
+            <option value="Dog Food">Dog Food</option>
+          </select>
+          {formik.touched.category && formik.errors.category ? (
+            <div className="text-red-500">{formik.errors.category}</div>
+          ) : null}
+        </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium">Image URL</label>
                 <input  type="text"  name="image"  value={formik.values.image}  onChange={formik.handleChange}  className="w-full p-2 border border-gray-300 rounded"/>

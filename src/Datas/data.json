@@ -790,6 +790,18 @@
       "stock": 140,
       "rating": 4.9,
       "image": "https://images-cdn.ubuy.co.in/64e06344f58d5a0c7a6e9968-temptations-kitten-chicken-and-milk-cat.jpg"
+    },
+    {
+      "id": "21",
+      "name": "hlo",
+      "price": 32,
+      "rating": 4,
+      "description": "sdffsd",
+      "brand": "sdfdsfsd",
+      "weight": "323",
+      "ingredients": "dsfdfds",
+      "category": "Cat Food",
+      "image": "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
     }
   ]
 }
