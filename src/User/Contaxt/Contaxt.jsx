@@ -38,113 +38,6 @@ const ContaxtForm = ({ children }) => {
   const [totalamount, setTotalamount] = useState(0); // Total amount in cart
 
   const navigate = useNavigate(); // navigation
-
-  // registration detail check
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const namevalid = name.trim(); // Trimmed name for validation
-    const passvalid = pass.split("").filter((x) => x === " "); // Check for spaces in password
-    const response = await axios.get("http://localhost:3000/register-details"); // Fetch existing user data
-    const check = response.data.find((x) => x.email === email); // Check for existing email
-
-    // check all details
-    if (
-      namevalid.length !== 0 && email !== "" &&
-      passvalid.length === 0 && confirm === pass &&
-      pass.length >= 5 && confirm.length >= 5 &&
-      check === undefined
-    ) {
-      // If validation is successful, register the user
-      await axios.post("http://localhost:3000/register-details", {
-        name,
-        email,
-        password: pass,
-        cart: [],
-        totalamount: 0,
-        totalQuantity: 0,
-        orderditems: [],
-        Block: false
-      });
-      navigate('/Login'); // Navigate to login page
-      // reset all states
-      setVerifyname(true);
-      setVerifyconfirm(true);
-      setVerifyemail(true);
-      setVerifypass(true);
-      setConfirm("");
-      setEmail("");
-      setName("");
-      setPass("");
-      toast.success("Successfully Registered"); // Show success message
-    } else {
-      // Handle validation errors
-      if (name !== "") setVerifyname(true);
-      else {
-        setVerifyname(false);
-        toast.error("please enter correct name");
-      }
-      if (email !== "" && check === undefined) setVerifyemail(true);
-      else {
-        setVerifyemail(false);
-        toast.error("Email Already Existing");
-      }
-      if (passvalid.length === 0 && pass.length >= 5) setVerifypass(true);
-      else {
-        setVerifypass(false);
-        toast.error("Please Create Strong Password");
-      }
-      if (confirm === pass && confirm.length >= 5) setVerifyconfirm(true);
-      else {
-        toast.error("Please Enter Correct Password");
-        setVerifyconfirm(false);
-      }
-    }
-  };
-
-  // login details check
-  const loginSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.get("http://localhost:3000/register-details"); // Fetch user data
-      const check = response.data.find((x) => x.email === loginmail && x.password === loginpass); //  login validation
-
-      if (check && check.admin != "true") {
-        // If user is found, store user data in localStorage
-        localStorage.setItem("user_Id", check.id);
-        localStorage.setItem("user_name", check.name);
-        localStorage.setItem('user', JSON.stringify(check));
-        localStorage.removeItem('cart'); // Clear cart in localStorage
-        const userResponse = await axios.get(`http://localhost:3000/register-details/${check.id}`);
-        const userCart = userResponse.data.cart; // Fetch user's cart
-
-        const totquantiy = userResponse.data.totalQuantity; // Total quantity
-        const shownamename = userResponse.data.name; // User's name
-        const totamount = userResponse.data.totalamount; // Total amount
-        sessionStorage.setItem('cart', JSON.stringify(userCart)); // Store cart in sessionStorage
-
-        // user data storing states
-        setUserid(check.id);
-        setCartview(userCart);
-        setTotalquantity(totquantiy);
-        setTotalamount(totamount);
-        setShowname(shownamename);
-
-        setAdmin(false)
-        setUser(true); // User verified
-        toast.success("Login Successfully"); // Show success message
-        navigate('/'); // Navigate to homepage
-      } else if (check && check.admin == "true") {
-        localStorage.setItem('admin', JSON.stringify(check));
-        setAdmin(true)
-        navigate('/');
-      } else {
-        toast.error("Invalid Email or Password"); // Show error message
-      }
-    } catch (error) {
-      console.error('Login error:', error); // Log any errors
-    }
-  };
-
   // logout
   const logout = () => {
     Swal.fire({
@@ -571,7 +464,7 @@ const ContaxtForm = ({ children }) => {
 
   return (
     <div>
-      <Pascomponent.Provider value={{ showModal, setShowModal, productdelete, products, setProducts, edituser, users, setUsers, userfilter, setUserfilter, filtereduser, setFiltereduser, specificuser, setSpecificuser, userdetails, admin, setAdmin, click, search, setSearch, showname, setShowname, logout, verifyOrder, paymentview, setPaymentview, address, setaddress, addressmail, setaddressmail, addressname, setAddressname, Addresscheck, payment, spesificdelete, totalamount, setTotalamount, totalQuantity, setTotalquantity, decreament, setCartview, increament, cartadd, loginSubmit, handleSubmit, cartview, userid, setUserid, user, setUser, specificcart, setSpecificcart, filteredProducts, setFilteredProducts, itemfilter, setItemfilter, loginmail, setLoginmail, loginpass, setLoginpass, name, setName, email, setEmail, pass, setPass, confirm, setConfirm, verifyname, setVerifyname, verifyemail, setVerifyemail, verifypass, setVerifypass, verifyconfirm, setVerifyconfirm, storeemail, setStoreemail }}>
+      <Pascomponent.Provider value={{ showModal, setShowModal, productdelete, products, setProducts, edituser, users, setUsers, userfilter, setUserfilter, filtereduser, setFiltereduser, specificuser, setSpecificuser, userdetails, admin, setAdmin, click, search, setSearch, showname, setShowname, logout, verifyOrder, paymentview, setPaymentview, address, setaddress, addressmail, setaddressmail, addressname, setAddressname, Addresscheck, payment, spesificdelete, totalamount, setTotalamount, totalQuantity, setTotalquantity, decreament, setCartview, increament, cartadd, cartview, userid, setUserid, user, setUser, specificcart, setSpecificcart, filteredProducts, setFilteredProducts, itemfilter, setItemfilter, loginmail, setLoginmail, loginpass, setLoginpass, name, setName, email, setEmail, pass, setPass, confirm, setConfirm, verifyname, setVerifyname, verifyemail, setVerifyemail, verifypass, setVerifypass, verifyconfirm, setVerifyconfirm, storeemail, setStoreemail }}>
         {children}
 
       </Pascomponent.Provider>

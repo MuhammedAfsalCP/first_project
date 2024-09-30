@@ -307,6 +307,17 @@
         }
       ],
       "Block": false
+    },
+    {
+      "id": "b095",
+      "name": "afsal",
+      "email": "afsal2@gmail.com",
+      "password": "afsal",
+      "cart": [],
+      "totalamount": 0,
+      "totalQuantity": 0,
+      "orderditems": [],
+      "Block": false
     }
   ],
   "Prudocts": [
