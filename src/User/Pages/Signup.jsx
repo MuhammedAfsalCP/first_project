@@ -1,162 +1,113 @@
-import React from 'react';
-import Footer from '../Components/Footer';
-import { useNavigate, Link } from 'react-router-dom';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
-import { Pascomponent } from '../../App';
+import React, { useContext } from 'react';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useContext } from 'react';
-import { toast } from 'react-toastify';
+import { useNavigate, Link } from 'react-router-dom';
+import { Pascomponent } from '../App'; // Assuming this context is needed
 
 const Signup = () => {
+  const { setProducts } = useContext(Pascomponent); // Access context if necessary
   const navigate = useNavigate();
-  const { setVerifyname, setVerifyemail, setVerifypass, setVerifyconfirm } = useContext(Pascomponent);
 
-  // Validation schema with Yup
-  const validationSchema = Yup.object({
-    name: Yup.string().trim().required('Name is required'),
-    email: Yup.string().email('Invalid email format').required('Email is required'),
-    pass: Yup.string()
-      .min(5, 'Password must be at least 5 characters')
-      .matches(/^\S*$/, 'Password should not contain spaces')
-      .required('Password is required'),
-    confirm: Yup.string()
-      .oneOf([Yup.ref('pass'), null], 'Passwords must match')
-      .required('Confirm your password')
-  });
+  // Formik setup
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().required('Name is required').trim(),
+      email: Yup.string().email('Invalid email format').required('Email is required'),
+      password: Yup.string().min(5, 'Password must be at least 5 characters').required('Password is required'),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .required('Confirm password is required'),
+    }),
+    onSubmit: async (values, { resetForm }) => {
+      const { name, email, password } = values;
 
-  // Handle form submission
-  const handleSubmit = async (values, { resetForm }) => {
-    try {
-      const { name, email, pass, confirm } = values;
-      const response = await axios.get('http://localhost:3000/register-details');
-      const check = response.data.find((x) => x.email === email);
+      try {
+        const response = await axios.get('http://localhost:3000/register-details');
+        const check = response.data.find((user) => user.email === email);
 
-      if (!check) {
-        // Register user if validation passes
-        await axios.post('http://localhost:3000/register-details', {
-          name,
-          email,
-          password: pass,
-          cart: [],
-          totalamount: 0,
-          totalQuantity: 0,
-          orderditems: [],
-          Block: false
-        });
-
-        navigate('/Login');
-        resetForm(); // Reset form fields after successful submission
-        toast.success('Successfully Registered');
-      } else {
-        toast.error('Email Already Existing');
+        if (check) {
+          alert('Email Already Exists'); // You can replace this with your toast notification
+        } else {
+          await axios.post('http://localhost:3000/register-details', {
+            name,
+            email,
+            password,
+            cart: [],
+            totalamount: 0,
+            totalQuantity: 0,
+            orderditems: [],
+            Block: false,
+          });
+          alert('Successfully Registered'); // Replace with toast notification
+          navigate('/Login');
+          resetForm(); // Reset the form after successful registration
+        }
+      } catch (error) {
+        alert('Something went wrong. Please try again.'); // Replace with toast notification
       }
-    } catch (error) {
-      toast.error('Registration Failed');
-    }
-  };
+    },
+  });
 
   return (
     <div className="min-h-screen bg-[#fcf8ef] flex flex-col">
-      {/* Main Content */}
       <div className="flex-grow flex items-center justify-center p-5">
         <div className="w-full max-w-md bg-white border border-[#1c110b] rounded-lg p-8 shadow-lg">
           <h1 className="font-sofadi font-bold text-2xl md:text-3xl lg:text-4xl text-center mb-6">Create Account</h1>
-          
-          {/* Formik Form */}
-          <Formik
-            initialValues={{
-              name: '',
-              email: '',
-              pass: '',
-              confirm: ''
-            }}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            {({ isSubmitting }) => (
-              <Form className="flex flex-col space-y-6">
-                {/* Name Input */}
-                <div className="flex flex-col">
-                  <label className="text-base md:text-lg lg:text-xl font-semibold">
-                    Enter Your Name
-                    <ErrorMessage name="name" component="div" className="text-red-500" />
-                  </label>
-                  <Field
-                    id="name"
-                    name="name"
-                    className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                    type="text"
-                    placeholder="Enter Name"
-                  />
-                </div>
+          <form onSubmit={formik.handleSubmit} className="flex flex-col space-y-6">
+            
+            {/* Name Input */}
+            <div className="flex flex-col">
+              <label className="text-base md:text-lg lg:text-xl font-semibold">Enter Your Name</label>
+              <input type="text" name="name" onChange={formik.handleChange} value={formik.values.name} className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" placeholder="Enter Name" />
+              {formik.touched.name && formik.errors.name ? (
+                <div className="text-red-500 text-sm">{formik.errors.name}</div>
+              ) : null}
+            </div>
 
-                {/* Email Input */}
-                <div className="flex flex-col">
-                  <label className="text-base md:text-lg lg:text-xl font-semibold">
-                    Enter Your Email
-                    <ErrorMessage name="email" component="div" className="text-red-500" />
-                  </label>
-                  <Field
-                    id="email"
-                    name="email"
-                    className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                    type="email"
-                    placeholder="Enter Email"
-                  />
-                </div>
+            {/* Email Input */}
+            <div className="flex flex-col">
+              <label className="text-base md:text-lg lg:text-xl font-semibold">Enter Your Email</label>
+              <input type="email" name="email" onChange={formik.handleChange} value={formik.values.email} className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" placeholder="Enter E-mail" />
+              {formik.touched.email && formik.errors.email ? (
+                <div className="text-red-500 text-sm">{formik.errors.email}</div>
+              ) : null}
+            </div>
 
-                {/* Password Input */}
-                <div className="flex flex-col">
-                  <label className="text-base md:text-lg lg:text-xl font-semibold">
-                    Create a Password
-                    <ErrorMessage name="pass" component="div" className="text-red-500" />
-                  </label>
-                  <Field
-                    id="password"
-                    name="pass"
-                    className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                    type="password"
-                    placeholder="Enter Password"
-                  />
-                </div>
+            {/* Password Input */}
+            <div className="flex flex-col">
+              <label className="text-base md:text-lg lg:text-xl font-semibold">Create a Password</label>
+              <input type="password" name="password" onChange={formik.handleChange} value={formik.values.password} className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" placeholder="Enter Password" />
+              {formik.touched.password && formik.errors.password ? (
+                <div className="text-red-500 text-sm">{formik.errors.password}</div>
+              ) : null}
+            </div>
 
-                {/* Confirm Password Input */}
-                <div className="flex flex-col">
-                  <label className="text-base md:text-lg lg:text-xl font-semibold">
-                    Confirm Your Password
-                    <ErrorMessage name="confirm" component="div" className="text-red-500" />
-                  </label>
-                  <Field
-                    id="confirm"
-                    name="confirm"
-                    className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                    type="password"
-                    placeholder="Re-Enter Password"
-                  />
-                </div>
+            {/* Confirm Password Input */}
+            <div className="flex flex-col">
+              <label className="text-base md:text-lg lg:text-xl font-semibold">Confirm Your Password</label>
+              <input type="password" name="confirmPassword" onChange={formik.handleChange} value={formik.values.confirmPassword} className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" placeholder="Re-Enter Password" />
+              {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+                <div className="text-red-500 text-sm">{formik.errors.confirmPassword}</div>
+              ) : null}
+            </div>
 
-                {/* Submit Button */}
-                <button
-                  className="bg-[#ad9279] text-white rounded-md py-2 text-lg md:text-xl lg:text-2xl font-semibold w-full mt-4 transition-all duration-300 hover:bg-[#927156]"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  Submit
-                </button>
-              </Form>
-            )}
-          </Formik>
+            {/* Submit Button */}
+            <button type="submit" className="bg-[#ad9279] text-white rounded-md py-2 text-lg md:text-xl lg:text-2xl font-semibold w-full mt-4 transition-all duration-300 hover:bg-[#927156]" >Submit</button>
+          </form>
         </div>
       </div>
 
       {/* Footer */}
       <div className="bg-[#fcf8ef] font-bold text-center py-2">
-        <Link to="/Login" className="text-blue-500 hover:underline">
-          Already have an account?
-        </Link>
+        <Link to="/Login" className="text-blue-500 hover:underline">Already have an account?</Link>
       </div>
-      <Footer />
     </div>
   );
 };
