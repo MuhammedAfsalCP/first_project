@@ -2,7 +2,7 @@
   "orders": [
     {
       "id": "earnings",
-      "earning": 1011
+      "earning": 1097.5
     },
     {
       "id": "e486",
@@ -144,6 +144,18 @@
     {
       "id": "cbec",
       "order": 3
+    },
+    {
+      "id": "195f",
+      "order": 2
+    },
+    {
+      "id": "cafb",
+      "order": 1
+    },
+    {
+      "id": "7128",
+      "order": 1
     }
   ],
   "register-details": [
@@ -317,6 +329,129 @@
       "totalamount": 0,
       "totalQuantity": 0,
       "orderditems": [],
+      "Block": false
+    },
+    {
+      "id": "4abf",
+      "name": "afsal",
+      "email": "test@gmail.com",
+      "password": "afsal",
+      "cart": [],
+      "totalamount": 0,
+      "totalQuantity": 1,
+      "orderditems": [
+        {
+          "address": "testing address",
+          "name": "afsal",
+          "email": "test@gmail.com",
+          "items": [
+            {
+              "id": "4",
+              "name": "Indoor Cat Food - Chicken & Rice",
+              "category": "Cat Food",
+              "price": 19,
+              "description": "Formulated for indoor cats, providing balanced nutrition with real chicken.",
+              "brand": "KittyCare",
+              "weight": "4 kg",
+              "ingredients": [
+                "Chicken",
+                "Rice",
+                "Carrots",
+                "Peas",
+                "Vitamins"
+              ],
+              "stock": 120,
+              "rating": 4.6,
+              "image": "https://m.media-amazon.com/images/I/71xPT6-dqXL.jpg",
+              "quantity": 1,
+              "total_price": 19
+            },
+            {
+              "id": "2",
+              "name": "Grain-Free Cat Food - Salmon & Tuna",
+              "category": "Cat Food",
+              "price": 22.5,
+              "description": "Grain-free cat food packed with omega-3 from salmon and tuna for a shiny coat.",
+              "brand": "Whiskers Delight",
+              "weight": "3 kg",
+              "ingredients": [
+                "Salmon",
+                "Tuna",
+                "Sweet Potato",
+                "Peas",
+                "Vitamins"
+              ],
+              "stock": 80,
+              "rating": 4.5,
+              "image": "https://m.media-amazon.com/images/I/51ze2L18u2L.jpg",
+              "quantity": 1,
+              "total_price": 22.5
+            }
+          ],
+          "Totalamount": 41.5,
+          "TotalQuantity": 2
+        },
+        {
+          "address": "",
+          "name": "",
+          "email": "",
+          "items": [
+            {
+              "id": "2",
+              "name": "Grain-Free Cat Food - Salmon & Tuna",
+              "category": "Cat Food",
+              "price": 22.5,
+              "description": "Grain-free cat food packed with omega-3 from salmon and tuna for a shiny coat.",
+              "brand": "Whiskers Delight",
+              "weight": "3 kg",
+              "ingredients": [
+                "Salmon",
+                "Tuna",
+                "Sweet Potato",
+                "Peas",
+                "Vitamins"
+              ],
+              "stock": 80,
+              "rating": 4.5,
+              "image": "https://m.media-amazon.com/images/I/51ze2L18u2L.jpg",
+              "quantity": 1,
+              "total_price": 22.5
+            }
+          ],
+          "Totalamount": 22.5,
+          "TotalQuantity": 1
+        },
+        {
+          "address": "asfafsgafsta",
+          "name": "afsal",
+          "email": "asgagsh@gmail.com",
+          "items": [
+            {
+              "id": "2",
+              "name": "Grain-Free Cat Food - Salmon & Tuna",
+              "category": "Cat Food",
+              "price": 22.5,
+              "description": "Grain-free cat food packed with omega-3 from salmon and tuna for a shiny coat.",
+              "brand": "Whiskers Delight",
+              "weight": "3 kg",
+              "ingredients": [
+                "Salmon",
+                "Tuna",
+                "Sweet Potato",
+                "Peas",
+                "Vitamins"
+              ],
+              "stock": 80,
+              "rating": 4.5,
+              "image": "https://m.media-amazon.com/images/I/51ze2L18u2L.jpg",
+              "quantity": 1,
+              "total_price": 22.5
+            }
+          ],
+          "Totalamount": 22.5,
+          "TotalQuantity": 1
+        }
+      ],
       "Block": false
     }
   ],

@@ -1,9 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Footer from '../Components/Footer'
 import { Pascomponent } from '../../App'
 import Navbar from '../Components/Navbar'
 
 const Paymentsection = () => {
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+
+  const handlePaymentMethodChange = (event) => {
+    setSelectedPaymentMethod(event.target.value); // Update selected payment method
+  };
+
     const {verifyOrder, Addresscheck, address, setaddress, addressmail, setaddressmail, addressname, setAddressname, paymentview, totalamount } = useContext(Pascomponent)
     return (
       <div className='min-h-[100vh] w-full bg-[#fcf8ef]'>
@@ -39,14 +45,35 @@ const Paymentsection = () => {
         <div style={{ display: paymentview ? "block" : "none" }} className='h-auto w-full md:w-[45vw] p-6 bg-white shadow-lg rounded-lg flex flex-col space-y-4'>
           <h1 className='text-2xl font-semibold mb-4'>Amount: ${totalamount}</h1>
           <div className='flex flex-col space-y-2'>
-            {['Cash on Delivery', 'UPI', 'Card', 'EMI'].map((method, index) => (
-              <div key={index} className='flex items-center'>
-                <input type="radio" id={method.toLowerCase().replace(/ /g, "-")}  name="payment-method" className='mr-2'/>
-                <label htmlFor={method.toLowerCase().replace(/ /g, "-")} className='text-lg'>{method}</label>
-              </div>
-            ))}
-          </div>
-          <button onClick={verifyOrder} className='bg-blue-600 text-white rounded-md py-2 mt-4 w-full hover:bg-blue-700 transition duration-300'>Pay</button>
+      {['Cash on Delivery', 'UPI', 'Card', 'EMI'].map((method, index) => (
+        <div key={index} className='flex items-center'>
+          <input
+            type="radio"
+            id={method.toLowerCase().replace(/ /g, "-")}
+            name="payment-method"
+            value={method} // Set value for the radio button
+            onChange={handlePaymentMethodChange} // Handle selection
+            className='mr-2'
+            checked={selectedPaymentMethod === method} // Check if this method is selected
+          />
+          <label htmlFor={method.toLowerCase().replace(/ /g, "-")} className='text-lg'>{method}</label>
+        </div>
+      ))}
+      
+      <button
+        onClick={() => {
+          if (selectedPaymentMethod) {
+            verifyOrder(); // Call verifyOrder only if a payment method is selected
+          } else {
+            alert('Please select a payment method.'); // Alert if no method is selected
+          }
+        }}
+        className={`bg-blue-600 text-white rounded-md py-2 mt-4 w-full hover:bg-blue-700 transition duration-300 ${!selectedPaymentMethod ? 'opacity-50 cursor-not-allowed' : ''}`}
+        disabled={!selectedPaymentMethod} // Disable button if no method is selected
+      >
+        Pay
+      </button>
+    </div>
         </div>
       </div>
       <Footer />

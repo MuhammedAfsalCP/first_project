@@ -3,7 +3,8 @@ import React, { useContext } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
-import { Pascomponent } from '../App'; // Assuming this context is needed
+import { Pascomponent } from '../../App';
+ // Assuming this context is needed
 
 const Signup = () => {
   const { setProducts } = useContext(Pascomponent); // Access context if necessary
