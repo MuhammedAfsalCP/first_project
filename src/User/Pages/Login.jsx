@@ -56,7 +56,8 @@ const Login = () => {
           setShowname(showName);
 
           if (user.admin === "true") {
-            setAdmin(true); // Set admin status
+            setAdmin(true);
+            localStorage.setItem('admin',"true") // Set admin status
             toast.success("Admin logged in successfully");
           } else {
             setAdmin(false);
