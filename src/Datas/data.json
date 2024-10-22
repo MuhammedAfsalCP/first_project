@@ -214,9 +214,50 @@
       "name": "afsal",
       "email": "afsal@gmail.com",
       "password": "afsal",
-      "cart": [],
-      "totalamount": 0,
-      "totalQuantity": 0,
+      "cart": [
+        {
+          "id": "1",
+          "name": "Premium Dog Food - Chicken Flavor",
+          "category": "Dog Food",
+          "price": 20,
+          "description": "High-quality dog food with real chicken for optimal nutrition and flavor.",
+          "brand": "PawBest",
+          "weight": "6 kg",
+          "ingredients": [
+            "Chicken",
+            "Rice",
+            "Oats",
+            "Vegetable Oil",
+            "Vitamins"
+          ],
+          "stock": 100,
+          "rating": 4.7,
+          "image": "https://m.media-amazon.com/images/I/414uRei9j4L.jpg",
+          "editProduct": {
+            "id": "1",
+            "name": "Premium Dog Food - Chicken Flavor",
+            "category": "Dog Food",
+            "price": "25",
+            "description": "High-quality dog food with real chicken for optimal nutrition and flavor.",
+            "brand": "PawBest",
+            "weight": "5 kg",
+            "ingredients": [
+              "Chicken",
+              "Rice",
+              "Oats",
+              "Vegetable Oil",
+              "Vitamins"
+            ],
+            "stock": 100,
+            "rating": 4.7,
+            "image": "https://m.media-amazon.com/images/I/414uRei9j4L.jpg"
+          },
+          "quantity": 1,
+          "total_price": 20
+        }
+      ],
+      "totalamount": 20,
+      "totalQuantity": 1,
       "orderditems": [
         {
           "address": "afsalafsalafsal",
@@ -318,17 +359,6 @@
           "TotalQuantity": 3
         }
       ],
-      "Block": false
-    },
-    {
-      "id": "b095",
-      "name": "afsal",
-      "email": "afsal2@gmail.com",
-      "password": "afsal",
-      "cart": [],
-      "totalamount": 0,
-      "totalQuantity": 0,
-      "orderditems": [],
       "Block": false
     },
     {
@@ -824,36 +854,6 @@
       "stock": 120,
       "rating": 4.8,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTfi6HSQ2Z8Rlvo4Afw6GioyS8EOA4GmDNlw&s"
-    },
-    {
-      "id": "20",
-      "name": "Kitten Treats - Milk & Chicken",
-      "category": "Cat Food",
-      "price": 8,
-      "description": "Soft and tasty kitten treats made with milk and chicken.",
-      "brand": "KittyNibbles",
-      "weight": "150g",
-      "ingredients": [
-        "Milk",
-        "Chicken",
-        "Oats",
-        "Vitamins"
-      ],
-      "stock": 140,
-      "rating": 4.9,
-      "image": "https://images-cdn.ubuy.co.in/64e06344f58d5a0c7a6e9968-temptations-kitten-chicken-and-milk-cat.jpg"
-    },
-    {
-      "id": "21",
-      "name": "hlo",
-      "price": 32,
-      "rating": 4,
-      "description": "sdffsd",
-      "brand": "sdfdsfsd",
-      "weight": "323",
-      "ingredients": "dsfdfds",
-      "category": "Cat Food",
-      "image": "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
     }
   ]
 }

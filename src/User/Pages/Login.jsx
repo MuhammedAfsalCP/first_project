@@ -57,6 +57,7 @@ const Login = () => {
 
           if (user.admin === "true") {
             setAdmin(true);
+            navigate
             localStorage.setItem('admin',"true") // Set admin status
             toast.success("Admin logged in successfully");
           } else {
@@ -64,7 +65,7 @@ const Login = () => {
             setUser(true); // User verified
             toast.success("Login Successful");
           }
-          navigate('/'); // Navigate to homepage
+          navigate('/',{replace:true}); // Navigate to homepage
         } else {
           toast.error("Invalid Email or Password"); // Show error message
         }

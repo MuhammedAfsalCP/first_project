@@ -291,9 +291,15 @@ const ContaxtForm = ({ children }) => {
   };
 
   // navigate to payment page
-  const payment = () => {
-    if (totalQuantity > 0) {
+  const payment =async () => {
+    const response = await axios.get(`http://localhost:3000/register-details/${userid}`);
+        // Fetch user data
+        const detail = response.data;
+        let block = detail.Block
+    if (totalQuantity > 0&&block==false) {
       navigate('/Payment'); // Navigate to payment page if there are items in the cart
+    }else{
+      Swal.fire("Please contact admin");
     }
   };
 
