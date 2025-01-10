@@ -1,120 +1,106 @@
 import React, { useContext, useEffect, useState } from 'react'; 
 import { Pascomponent } from '../App'; 
+import { useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSpesificuser } from '../Redex/UserSlice';
 
 const UserDetail = () => {
   // cotaxt access
-  const { users, specificuser } = useContext(Pascomponent);
+  const {spesificuser,token} = useSelector((state) => state.User);
+const location = useLocation();
+  const userId = location.state || null;
   
-  // user data storing state
-  const [user, setuser] = useState(() => {
-    // access to session storage filter datas for users
-    const storedUsers = sessionStorage.getItem('filteredusers');
-    return storedUsers ? JSON.parse(storedUsers) : []; // no users storing time emty array pass
-  });
-
-  // spesific user access
-  useEffect(() => {
-    if (users && specificuser) {
-      const filteredUsers = users.filter((x) => x.id === specificuser); // spesific user filter
-      setuser(filteredUsers); // filterd userd set
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    if(userId){
+      dispatch(fetchSpesificuser({userId,token}))
     }
-  }, [users, specificuser]);
+  },[])
 
-  // user changes update session storage
-  useEffect(() => {
-    if (user.length > 0) {
-      sessionStorage.setItem('filteredusers', JSON.stringify(user)); // store to session storage
-    }
-  }, [user]);
 
   return (
-    <div className="w-full h-full flex flex-wrap gap-4 p-4">
-      {/* User Profile Section */}
-      <div className="w-full lg:w-[48%] h-auto bg-gray-100 p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4">User Profile</h2>
-        {user.map((x, index) => (
-          <div key={index} className="flex flex-col sm:flex-row items-center bg-white p-6 rounded-lg shadow-lg mb-4">
-            {/* Profile Image */}
-            <img src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE=" alt="User Avatar"  className="rounded-full w-24 h-24 sm:mr-6 mb-4 sm:mb-0" />
-            {/* User Info */}
-            <div>
-              <h1 className="text-xl font-bold text-gray-800">Name: {x.name}</h1>
-              <h2 className="text-md text-gray-600">Email: {x.email}</h2>
-             
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Financial Summary Section */}
-      <div className="w-full lg:w-[48%] h-auto bg-white p-6 rounded-lg shadow-lg overflow-scroll lg:h-[48%]">
-        <h2 className="text-2xl font-bold mb-4">Financial Summary</h2>
-        {user.map((x) => (
-          <div key={x.name}>
-            {x.orderditems.map((item, index) => (
-              <div key={index} className="p-4 bg-gray-100 rounded-lg shadow mb-4">
-                <h1 className="text-xl font-bold">Received Money: {item.Totalamount}</h1>
-                <h1 className="text-xl font-bold">Ordered Items Quantity: {item.TotalQuantity}</h1>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-
-      {/* Cart Section */}
-      <div className="w-full lg:w-[48%] h-[60%] bg-white p-6 rounded-lg shadow-lg overflow-scroll">
-        <h2 className="sticky top-0 bg-blue-500 text-white text-center text-2xl font-bold p-4 rounded-lg">
-          Cart
+    <div className="w-full h-full p-6 space-y-8">
+  {/* User Overview Section */}
+  <div className="flex flex-col lg:flex-row items-center justify-between bg-gray-100 p-6 rounded-lg shadow-lg">
+    {/* Profile Image */}
+    <div className="flex items-center">
+      <img
+        src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
+        alt="User Avatar"
+        className="rounded-full w-24 h-24 mr-6"
+      />
+      {/* User Info */}
+      <div>
+        <h1 className="text-xl font-bold text-gray-800">
+          {spesificuser?.username || "Guest User"}
+        </h1>
+        <h2 className="text-md text-gray-600">
+          {spesificuser?.email || "Email not available"}
         </h2>
-        {user.map((x, userIndex) => (
-          <div key={userIndex}>
-            {x.cart.map((item, itemIndex) => (
-              <div key={itemIndex} className="flex flex-col md:flex-row bg-white p-4 shadow-lg rounded-lg mb-4">
-                {/* Image */}
-                <div className="w-full md:w-1/3 mb-4 md:mb-0">
-                  <img src={item.image}  alt="Item" className="w-full h-40 object-cover rounded-md" />
-                </div>
-                {/* Item Details */}
-                <div className="w-full md:w-2/3 flex flex-col justify-center md:pl-6">
-                  <h1 className="text-lg font-bold">Total Quantity: {item.quantity}</h1>
-                  <h1 className="text-lg">Total Price: {item.total_price}</h1>
-                </div>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-
-      {/* Orders Section */}
-      <div className="w-full lg:w-[48%] h-[60%] bg-white p-6 rounded-lg shadow-lg overflow-scroll">
-        <h2 className="sticky top-0 bg-blue-500 text-white text-center text-2xl font-bold p-4 rounded-lg">
-          Orders
-        </h2>
-        {user.map((x, userIndex) => (
-          <div key={userIndex}>
-            {x.orderditems.map((item, itemIndex) => (
-              <div key={itemIndex} className="mb-8">
-                <h1 className="text-xl font-bold text-blue-600">Name: {item.name}</h1>
-                <h2 className="text-md text-gray-700 mb-4">Address: {item.address}</h2>
-                {item.items.map((pro, proIndex) => (
-                  <div key={proIndex} className="flex flex-col md:flex-row bg-white p-4 shadow-lg rounded-lg mb-4">
-                    {/* Image */}
-                    <div className="w-full md:w-1/3 mb-4 md:mb-0">
-                      <img src={pro.image}  alt="Item" className="w-full h-40 object-cover rounded-md" />
-                    </div>
-                    {/* Item Details */}
-                    <div className="w-full md:w-2/3 flex flex-col justify-center md:pl-6">
-                      <h1 className="text-lg font-bold">Total Quantity: {pro.quantity}</h1>
-                      <h1 className="text-lg">Total Price: {pro.total_price}</h1>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        ))}
       </div>
     </div>
+    {/* Summary */}
+    <div className="mt-6 lg:mt-0 text-center">
+      <h2 className="text-lg font-bold">
+        Total Orders: {spesificuser?.orders?.length || 0}
+      </h2>
+      <h2 className="text-lg font-bold">
+        Cart Items: {spesificuser?.cart?.cartitems?.length || 0}
+      </h2>
+    </div>
+  </div>
+
+  {/* Orders & Cart Section */}
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    {/* Orders */}
+    <div className="bg-white p-6 rounded-lg shadow-lg">
+      <h2 className="text-xl font-bold mb-4">Recent Orders</h2>
+      {spesificuser?.orders?.length ? (
+        spesificuser.orders.map((order, index) => (
+          <div key={index} className="bg-gray-100 p-4 rounded-lg shadow-sm mb-4">
+            <h3 className="font-bold">Order ID: {order.order_id}</h3>
+            <p>Status: {order.status}</p>
+            <p>
+              Items: {order.orderitems.length} | Total: ₹
+              {order.total_price}
+            </p>
+          </div>
+        ))
+      ) : (
+        <p className="text-gray-500">No orders yet.</p>
+      )}
+    </div>
+
+    {/* Cart */}
+    <div className="bg-white p-6 rounded-lg shadow-lg">
+      <h2 className="text-xl font-bold mb-4">Cart</h2>
+      {spesificuser?.cart?.cartitems?.length ? (
+        spesificuser.cart.cartitems.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-center bg-gray-100 p-4 rounded-lg shadow-sm mb-4"
+          >
+            <img
+              src={item.product_image}
+              alt="Product"
+              className="w-16 h-16 object-cover rounded-md mr-4"
+            />
+            <div>
+              <h3 className="font-bold">{item.product_name}</h3>
+              <p>Quantity: {item.quantity}</p>
+              <p>Price: ₹{item.product_price}</p>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p className="text-gray-500">Your cart is empty.</p>
+      )}
+    </div>
+  </div>
+</div>
+
+
+   
   );
 }
 

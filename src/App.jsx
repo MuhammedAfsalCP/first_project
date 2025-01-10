@@ -3,7 +3,7 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Signup from './User/Pages/Signup'
 import Login from './User/Pages/Login'
-import ContaxtForm from './User/Contaxt/Contaxt'
+// import ContaxtForm from './User/Contaxt/Contaxt'
 import Home from './User/Pages/Home'
 import CartDetails from './User/Pages/CartDetails'
 import Addtocart from './User/Pages/Addtocart'
@@ -17,6 +17,8 @@ import DashBoard from './Admin/DashBoard'
 import Editproduct from './Admin/Editproduct'
 import AddProducts from './Admin/AddProducts'
 import Orders from './User/Pages/Orders'
+import Allorders from './Admin/Allorders'
+import Spesificorderview from './Admin/spesificorderview'
 
 
 export const Pascomponent = React.createContext()
@@ -25,7 +27,7 @@ function App() {
 
   return (
     <>
-      <ContaxtForm>
+      
      
         <Routes>
           <Route path='/' element={<Home />}>
@@ -33,20 +35,22 @@ function App() {
           <Route path='Users' element={<Users/>}/>
           <Route path='Dashboard' element={<DashBoard/>}/>
           <Route path='EditProducts' element={<Editproduct/>}/>
-          <Route path=':userId' element={<UserDetail/>}/>
+          <Route path='userdetails' element={<UserDetail/>}/>
+          <Route path='allorders' element={<Allorders/>}/>
+          <Route path='spesificorder' element={<Spesificorderview/>}/>
           <Route path='Addproduct' element={<AddProducts/>}/>
           </Route>
 
           <Route path='Signup' element={<Signup />} />
           <Route path='Login' element={<Login />} />
          
-         <Route path='cart/:userId' element={<CartDetails/>}/>
+         <Route path='spesificproduct' element={<CartDetails/>}/>
          <Route path='AddtoCart' element={<Addtocart/>}/>
          <Route path='Payment' element={<Paymentsection/>}/>
          <Route path='Orders' element={<Orders/>}/>
         </Routes>
        
-      </ContaxtForm>
+      
       <ToastContainer/>
     </>
   )
