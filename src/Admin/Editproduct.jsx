@@ -87,7 +87,7 @@ console.log(formData)
   }
 
   if (error) {
-    return <div>Error: {error?.detail || error?.message || 'An unknown error occurred'}</div>;
+    return (<div>Error: {error?.detail || error?.message || 'An unknown error occurred'}</div>)
   }
 
   return (

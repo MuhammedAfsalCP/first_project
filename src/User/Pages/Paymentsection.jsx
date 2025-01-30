@@ -48,7 +48,7 @@ const Paymentsection = () => {
       newErrors.addressLine = "Address is required";
     }
 
-    return newErrors;
+    return (newErrors);
   };
   const handlePayment = async () => {
     if (paymentDetails) {
@@ -112,7 +112,7 @@ const navigate=useNavigate()
   }, [paymentVerified]);
 
   return (
-    <div className="min-h-[100vh] w-full bg-[#fcf8ef]">
+    <div className="min-h-[100vh] w-full bg-[#f0f4f8]">
       <Navbar />
       <div className="min-h-[80vh] w-full flex flex-col md:flex-row justify-center items-center p-4 mt-10">
         <div className="h-auto w-full md:w-[45vw] p-6 bg-white shadow-lg rounded-lg flex flex-col justify-center mb-6 md:mb-0">

@@ -39,61 +39,73 @@ const Login = () => {
   
 
   return (
-    <div className="min-h-screen bg-[#fcf8ef] flex flex-col">
-      <div className="flex-grow flex items-center justify-center p-5">
-        <div className="w-full max-w-md bg-white border border-[#1c110b] rounded-lg p-8 shadow-lg">
-          <h1 className="font-sofadi font-bold text-2xl md:text-3xl lg:text-4xl text-center mb-6">
-            Sign In
-          </h1>
-          <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+    {/* Main Container */}
+    <div className="flex-grow flex items-center justify-center p-5">
+      <div className="w-full max-w-lg bg-white rounded-lg shadow-md overflow-hidden">
+        {/* Header Section */}
+        <div className="bg-gradient-to-r from-indigo-500 to-purple-500 p-6 text-white text-center">
+          <h1 className="text-3xl font-extrabold mb-2">Welcome Back</h1>
+          <p className="text-sm font-medium">Login to continue and explore the best deals on pet food!</p>
+        </div>
+  
+        {/* Form Section */}
+        <div className="p-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {/* Username Input */}
-            <div className="flex flex-col">
-              <label className="text-base md:text-lg lg:text-xl font-semibold">Enter Your Username</label>
+            <div>
+              <label className="block text-sm font-semibold mb-1">Enter Your Username</label>
               <input
                 type="text"
                 name="username"
                 onChange={handleChange}
                 value={formData.username}
-                className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+                className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 placeholder="Enter Username"
               />
-              {error && error.username?.length > 0 && <p style={{ color: 'red' }}>{error.username[0]}</p>}
+              {error && error.username?.length > 0 && (
+                <p className="text-sm text-red-500 mt-1">{error.username[0]}</p>
+              )}
             </div>
-
+  
             {/* Password Input */}
-            <div className="flex flex-col">
-              <label className="text-base md:text-lg lg:text-xl font-semibold">Enter Your Password</label>
+            <div>
+              <label className="block text-sm font-semibold mb-1">Enter Your Password</label>
               <input
                 type="password"
                 name="password"
                 onChange={handleChange}
                 value={formData.password}
-                className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+                className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 placeholder="Enter Password"
               />
-              {error && error.error?.length > 0 && <p style={{ color: 'red' }}>{error.error}</p>}
+              {error && error.error?.length > 0 && (
+                <p className="text-sm text-red-500 mt-1">{error.error}</p>
+              )}
             </div>
-
+  
             {/* Submit Button */}
             <button
               type="submit"
-              className="bg-[#ad9279] text-white rounded-md py-2 text-lg md:text-xl lg:text-2xl font-semibold w-full mt-4 transition-all duration-300 hover:bg-[#927156]"
+              className="w-full py-3 bg-indigo-600 text-white font-bold text-lg rounded-lg hover:bg-indigo-700 transition-all duration-300"
               disabled={loading}
             >
-              {loading ? 'Logging in...' : 'Submit'}
+              {loading ? 'Logging in...' : 'Login'}
             </button>
           </form>
         </div>
       </div>
-
-      {/* Footer Link */}
-      <div className="bg-[#fcf8ef] font-bold text-center py-2">
-        <Link to="/Signup" className="text-blue-500 hover:underline">
-          Don't have an account? Signup here
-        </Link>
-      </div>
-      <Footer />
     </div>
+  
+    {/* Footer Section */}
+    <div className="py-4 text-center text-sm text-gray-600">
+      Don't have an account?{' '}
+      <Link to="/Signup" className="text-indigo-600 hover:underline">
+        Signup here
+      </Link>
+    </div>
+  </div>
+  
   );
 };
 

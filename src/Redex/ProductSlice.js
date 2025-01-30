@@ -11,6 +11,7 @@ export const fetchProducts = createAsyncThunk(
       const response = await axios.get(url || `${apiUrl}/products/productdetails/`, {
         params: page ? { page } : {}, // Use `page` as a query parameter only if provided
       });
+      console.log(response.data)
       return response.data; // Return the response data to the reducer
     } catch (error) {
       return rejectWithValue(error.response?.data || "An error occurred");

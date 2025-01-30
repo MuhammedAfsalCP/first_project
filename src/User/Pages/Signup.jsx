@@ -87,130 +87,147 @@ const Signup = () => {
 
 
   return (
-    <div className="min-h-screen bg-[#fcf8ef] flex flex-col">
-      <div className="flex-grow flex items-center justify-center p-5">
-        <div className="w-full max-w-md bg-white border border-[#1c110b] rounded-lg p-8 shadow-lg">
-          <h1 className="font-sofadi font-bold text-2xl md:text-3xl lg:text-4xl text-center mb-6">
-            Create Account
-          </h1>
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
-            <div className="flex flex-col">
-              <label className="text-base md:text-lg lg:text-xl font-semibold">Enter Your User Name</label>
-              <input
-                type="text"
-                name="username"
-                onChange={handleChange}
-                value={formData.username}
-                className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                placeholder="Enter First Name"
-              />
-              {error && error.username?.length > 0 && <p style={{ color: 'red' }}>{error.username[0]}</p>}
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+  {/* Main Container */}
+  <div className="flex-grow flex items-center justify-center p-5">
+    <div className="w-full max-w-lg bg-white rounded-lg shadow-md overflow-hidden">
+      {/* Header Section */}
+      <div className="bg-gradient-to-r from-indigo-500 to-purple-500 p-6 text-white text-center">
+        <h1 className="text-3xl font-extrabold mb-2">Create Your Account</h1>
+        <p className="text-sm font-medium">Join us and explore the best deals on pet food!</p>
+      </div>
 
-            </div>
-            {/* First Name Input */}
-            <div className="flex flex-col">
-              <label className="text-base md:text-lg lg:text-xl font-semibold">Enter Your First Name</label>
+      {/* Form Section */}
+      <div className="p-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Username */}
+          <div>
+            <label className="block text-sm font-semibold mb-1">User Name</label>
+            <input
+              type="text"
+              name="username"
+              onChange={handleChange}
+              value={formData.username}
+              className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              placeholder="Enter your username"
+            />
+            {error && error.username?.length > 0 && <p className="text-sm text-red-500 mt-1">{error.username[0]}</p>}
+          </div>
+
+          {/* Name Fields */}
+          <div className="flex gap-4">
+            {/* First Name */}
+            <div className="flex-1">
+              <label className="block text-sm font-semibold mb-1">First Name</label>
               <input
                 type="text"
                 name="first_name"
                 onChange={handleChange}
                 value={formData.first_name}
-                className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                placeholder="Enter First Name"
+                className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Enter your first name"
                 required
               />
             </div>
 
-            {/* Last Name Input */}
-            <div className="flex flex-col">
-              <label className="text-base md:text-lg lg:text-xl font-semibold">Enter Your Last Name</label>
+            {/* Last Name */}
+            <div className="flex-1">
+              <label className="block text-sm font-semibold mb-1">Last Name</label>
               <input
                 type="text"
                 name="last_name"
                 onChange={handleChange}
                 value={formData.last_name}
+                className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Enter your last name"
                 required
-                className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                placeholder="Enter Last Name"
               />
             </div>
+          </div>
 
-            {/* Email Input */}
-            <div className="flex flex-col">
-              <label className="text-base md:text-lg lg:text-xl font-semibold">Enter Your Email</label>
-              <input
-                type="email"
-                name="email"
-                onChange={handleChange}
-                value={formData.email}
-                className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                placeholder="Enter E-mail"
-              />
-              {error && error.email?.length > 0 && <p style={{ color: 'red' }}>{error.email[0]}</p>}
-            </div>
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-semibold mb-1">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              onChange={handleChange}
+              value={formData.email}
+              className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              placeholder="Enter your email"
+            />
+            {error && error.email?.length > 0 && <p className="text-sm text-red-500 mt-1">{error.email[0]}</p>}
+          </div>
 
-            {/* Password Input */}
-            <div className="flex flex-col">
-              <label className="text-base md:text-lg lg:text-xl font-semibold">Create a Password</label>
+          {/* Password Fields */}
+          <div className="flex gap-4">
+            {/* Password */}
+            <div className="flex-1">
+              <label className="block text-sm font-semibold mb-1">Password</label>
               <input
                 type="password"
                 name="password"
                 onChange={handleChange}
                 value={formData.password}
-                className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                placeholder="Enter Password"
+                className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Create a password"
               />
-              {error && error.password?.length > 0 && <p style={{ color: 'red' }}>{error.password[0]}</p>}
+              {error && error.password?.length > 0 && <p className="text-sm text-red-500 mt-1">{error.password[0]}</p>}
             </div>
 
-            {/* Confirm Password Input */}
-            <div className="flex flex-col">
-              <label className="text-base md:text-lg lg:text-xl font-semibold">Confirm Your Password</label>
+            {/* Confirm Password */}
+            <div className="flex-1">
+              <label className="block text-sm font-semibold mb-1">Confirm Password</label>
               <input
                 type="password"
                 name="password2"
                 onChange={handleChange}
                 value={formData.password2}
-                className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                placeholder="Re-Enter Password"
+                className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Re-enter your password"
               />
-              {error && error.password2?.length > 0 && <p style={{ color: 'red' }}>{error.password2[0]}</p>}
-              {error && error.Error?.length > 0 && <p style={{ color: 'red' }}>{error.Error}</p>}
+              {error && error.password2?.length > 0 && <p className="text-sm text-red-500 mt-1">{error.password2[0]}</p>}
             </div>
+          </div>
 
-            {otpSent && (
-              <div className="flex flex-col">
-                <label className="text-base md:text-lg lg:text-xl font-semibold">Enter OTP</label>
-                <input
-                  type="text"
-                  name="otp"
-                  value={otp}
-                  onChange={handleOtpChange}
-                  maxLength="6"
-                  className="mt-2 p-3 bg-transparent border border-[#1c110b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                  placeholder="Enter OTP"
-                  required
-                />
-              </div>
-            )}
+          {/* OTP */}
+          {otpSent && (
+            <div>
+              <label className="block text-sm font-semibold mb-1">Enter OTP</label>
+              <input
+                type="text"
+                name="otp"
+                value={otp}
+                onChange={handleOtpChange}
+                maxLength="6"
+                className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Enter OTP"
+                required
+              />
+            </div>
+          )}
 
-            {/* Submit Button */}
-            <button className="bg-[#ad9279] text-white rounded-md py-2 text-lg md:text-xl lg:text-2xl font-semibold w-full mt-4 transition-all duration-300 hover:bg-[#927156]" type="submit" disabled={loading}>
-              {loading ? "Registering..." : otpSent ? "Verify OTP" : "Register"}
-            </button>
-
-          </form>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="bg-[#fcf8ef] font-bold text-center py-2">
-        <Link to="/Login" className="text-blue-500 hover:underline">
-          Already have an account?
-        </Link>
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 bg-indigo-600 text-white font-bold text-lg rounded-lg hover:bg-indigo-700 transition-all duration-300"
+          >
+            {loading ? "Processing..." : otpSent ? "Verify OTP" : "Register"}
+          </button>
+        </form>
       </div>
     </div>
+  </div>
+
+  {/* Footer Section */}
+  <div className="py-4 text-center text-sm text-gray-600">
+    Already have an account?{' '}
+    <Link to="/Login" className="text-indigo-600 hover:underline">Login here</Link>
+  </div>
+</div>
+
+
   );
 };
 

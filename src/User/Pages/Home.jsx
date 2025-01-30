@@ -27,20 +27,20 @@ const Home = () => {
 
   // If loading, display a loading message
 
-  if (loading) {
-    return /* From Uiverse.io by SouravBandyopadhyay */
-    <div class="hourglassBackground">
-      <div class="hourglassContainer">
-        <div class="hourglassCurves"></div>
-        <div class="hourglassCapTop"></div>
-        <div class="hourglassGlassTop"></div>
-        <div class="hourglassSand"></div>
-        <div class="hourglassSandStream"></div>
-        <div class="hourglassCapBottom"></div>
-        <div class="hourglassGlass"></div>
-      </div>
-    </div>
-  }
+  // if (loading) {
+  //   return /* From Uiverse.io by SouravBandyopadhyay */
+  //   <div class="hourglassBackground">
+  //     <div class="hourglassContainer">
+  //       <div class="hourglassCurves"></div>
+  //       <div class="hourglassCapTop"></div>
+  //       <div class="hourglassGlassTop"></div>
+  //       <div class="hourglassSand"></div>
+  //       <div class="hourglassSandStream"></div>
+  //       <div class="hourglassCapBottom"></div>
+  //       <div class="hourglassGlass"></div>
+  //     </div>
+  //   </div>
+  // }
   const cartadd = (productId) => {
     dispatch(addToCart({ productId: productId }))
     setTimeout(() => {
@@ -50,94 +50,140 @@ const Home = () => {
 
   // If there's an error, display the error message
   if (error) {
-    return <div>Error: {error}</div>;
+    return (<div>Error: {error}</div>)
   }
   const fetchspecificproduct = (productId) => {
 
 
     navigate('/spesificproduct', { state: productId })
   }
-
+  console.log(products)
   return (
     <>
       {login?.is_staff ? <AdminPanel /> : (
-        <div className="min-h-screen bg-[#fcf8ef] overflow-hidden">
+        <div className="min-h-screen bg-[#f0f4f8] overflow-hidden flex flex-col">
           <Navbar />
 
           {/* Special Offer Section */}
-          <div className='w-full h-screen bg-gradient-to-r from-yellow-400 to-yellow-200 flex flex-col justify-center items-center text-center relative'>
-            <img
-              src={offerproduct?.Image}
-              alt='Special Offer'
-              className='absolute inset-0 w-full h-full object-cover object-center opacity-30'
-            />
-            <div className='relative z-10'>
-              <h1 className='text-4xl font-bold text-gray-800 mb-4'>Special Offer!</h1>
-              <p className='text-2xl text-gray-700 mb-6'>Get 20% off on your first purchase of pet food. Limited time offer!</p>
-              <button className='bg-red-500 text-white px-8 py-4 text-lg rounded hover:bg-red-600 transition-all duration-300' onClick={() => fetchspecificproduct(offerproduct.id)}>
+          <div className="relative w-full bg-gradient-to-r from-blue-400 via-blue-300 to-blue-200 rounded-lg shadow-lg p-8 flex flex-col md:flex-row items-center gap-8 mx-auto mt-[6%] max-w-6xl">
+            <div className="max-w-md text-center md:text-left">
+              <h1 className="text-4xl font-extrabold text-gray-800 mb-4">Special Offer!</h1>
+              <p className="text-lg md:text-xl text-gray-700 mb-6">
+                Get <span className="font-bold text-blue-600">20% off</span> on your first purchase of pet food. Don't miss out!
+              </p>
+              <button
+                className="bg-blue-600 text-white px-6 py-3 text-lg rounded-full shadow-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300"
+                onClick={() => fetchspecificproduct(offerproduct.id)}
+              >
                 Shop Now
               </button>
+            </div>
+            <div className="flex-1">
+              <img
+                src={
+                  offerproduct?.Image &&
+                  typeof offerproduct?.Image === "string" &&
+                  offerproduct?.Image.startsWith("https://petfoood.s3.amazonaws.com/https%3A")
+                    ? offerproduct?.Image.replace(
+                        "https://petfoood.s3.amazonaws.com/https%3A",
+                        "https://"
+                      )
+                    : offerproduct?.Image
+                }
+                alt="Special Offer"
+                className="w-full h-72 object-contain rounded-lg shadow-md"
+              />
             </div>
           </div>
 
           {/* Product List Section */}
-          <div className="pt-[80px] min-h-[60vh] w-full flex flex-wrap justify-center gap-6 p-4">
-            {products?.length > 0 ? (products.map((product) => (
-              <div
-                key={product.id}
-                className="w-full sm:w-80 bg-[#ede4e4] rounded-lg shadow-lg transition-transform transform hover:scale-105"
-              >
-                <div className="flex justify-center items-center p-4">
-                  <div className="w-32 h-32 overflow-hidden">
-                    <img
-                      className="object-cover w-full h-full"
-                      src={product.Image}
-                      alt={product.Name}
-                    />
+          <div className="pt-12 w-full flex flex-wrap justify-center gap-6 px-4 sm:px-6 md:px-12">
+            {products?.length > 0 ? (
+              products.map((product) => {
+                // Ensure product.Image exists and is a string before applying the check
+                const cleanImageUrl =
+                  product.Image && typeof product.Image === "string" &&
+                    product.Image.startsWith("https://petfoood.s3.amazonaws.com/https%3A")
+                    ? product.Image.replace(
+                      "https://petfoood.s3.amazonaws.com/https%3A",
+                      "https://"
+                    )
+                    : product.Image;
+
+                return (
+                  <div
+                    key={product.id}
+                    className="w-full sm:w-72 bg-white rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    <div className="overflow-hidden rounded-t-lg">
+                      <img
+                        className="w-full h-48 object-contain"
+                        src={cleanImageUrl}
+                        alt={product.Name}
+                      />
+                    </div>
+                    <div className="p-4 flex flex-col items-center">
+                      <h1 className="text-xl font-bold text-gray-800 text-center mb-2">
+                        {product.Name}
+                      </h1>
+                      <h2 className="text-lg text-gray-600 mb-4">
+                        Price: ₹{product.Price}
+                      </h2>
+                      <div className="flex justify-between w-full gap-4">
+                        <button
+                          className="flex-1 bg-blue-400 text-white py-2 rounded-md font-semibold hover:bg-blue-500 transform hover:scale-105 transition-all"
+                          onClick={() => cartadd(product.id)}
+                        >
+                          Add to Cart
+                        </button>
+                        <button
+                          className="flex-1 bg-green-500 text-white py-2 rounded-md font-semibold hover:bg-green-600 transform hover:scale-105 transition-all"
+                          onClick={() => fetchspecificproduct(product.id)}
+                        >
+                          View Details
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-col items-center p-4">
-                  <h1 className="text-lg font-semibold text-center">{product.Name}</h1>
-                  <h2 className="text-md text-gray-600">Price = ₹{product.Price}</h2>
-                  <div className="flex justify-between w-full mt-4">
-                    <button className="bg-yellow-400 h-10 w-28 rounded hover:bg-yellow-600 hover:text-white transition-all duration-300" onClick={() => cartadd(product.id)}>
-                      Add to Cart
-                    </button>
-                    <button
-                      onClick={() => {
-                        fetchspecificproduct(product.id);
-                      }}
-                      className="bg-green-400 text-white h-10 w-28 rounded hover:bg-green-600 transition-all duration-300"
-                    >
-                      View Details
-                    </button>
-                  </div>
-                </div>
+                );
+              })
+            ) : (
+              <div className="text-center">
+                <h1 className="text-2xl font-semibold text-red-500">No products found</h1>
               </div>
-            ))) : <div><h1>invalid product</h1></div>}
+            )}
           </div>
 
+
           {/* Pagination Buttons */}
-          <div className="flex justify-center items-center mt-6 gap-4">
+          <div className="flex justify-center items-center mt-8 gap-4 mb-5">
             <button
-              disabled={!previous} // Disable if no previous page
+              disabled={!previous}
               onClick={() => dispatch(fetchProducts({ url: previous }))}
-              className="bg-gray-300 text-gray-800 px-4 py-2 rounded"
+              className={`px-6 py-2 rounded-md font-medium ${previous
+                ? "bg-gray-800 text-white hover:bg-gray-700"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                }`}
             >
               Previous
             </button>
             <button
-              disabled={!next} // Disable if no next page
+              disabled={!next}
               onClick={() => dispatch(fetchProducts({ url: next }))}
-              className="bg-gray-300 text-gray-800 px-4 py-2 rounded"
+              className={`px-6 py-2 rounded-md font-medium ${next
+                ? "bg-gray-800 text-white hover:bg-gray-700"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                }`}
             >
               Next
             </button>
           </div>
 
-
           <Footer />
         </div>
+
+
+
 
       )}
     </>
