@@ -19,9 +19,9 @@ import AddProducts from './Admin/AddProducts'
 import Orders from './User/Pages/Orders'
 import SpecificOrderView from './Admin/SpecificOrderView'
 
-import AddToCart from './User/Pages/Addtocart'
-import AllOrders from './Admin/Allorders'
-import EditProduct from './Admin/Editproduct'
+import AddToCart from './User/Pages/AddToCart'
+import AllOrders from './Admin/AllOrders'
+import EditProduct from './Admin/EditProduct'
 import PaymentSection from './User/Pages/PaymentSection'
 
 
@@ -29,7 +29,7 @@ import PaymentSection from './User/Pages/PaymentSection'
 
 export const Pascomponent = React.createContext()
 function App() {
-hi
+
 
   return (
     <>
