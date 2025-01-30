@@ -6,19 +6,22 @@ import Login from './User/Pages/Login'
 // import ContaxtForm from './User/Contaxt/Contaxt'
 import Home from './User/Pages/Home'
 import CartDetails from './User/Pages/CartDetails'
-import Addtocart from './User/Pages/Addtocart'
-import Paymentsection from './User/Pages/Paymentsection'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AllProducts from './Admin/AllProducts'
 import Users from './Admin/Users'
 import UserDetail from './Admin/UserDetail'
 import DashBoard from './Admin/DashBoard'
-import Editproduct from './Admin/Editproduct'
 import AddProducts from './Admin/AddProducts'
 import Orders from './User/Pages/Orders'
-import Allorders from './Admin/Allorders'
-import Spesificorderview from './Admin/spesificorderview'
+import SpecificOrderView from './Admin/SpecificOrderView'
+import AllOrders from './Admin/AllOrders'
+import EditProduct from './Admin/EditProduct'
+import AddToCart from './User/Pages/AddToCart'
+import PaymentSection from './User/Pages/PaymentSection'
+
+
+
 
 
 export const Pascomponent = React.createContext()
@@ -34,10 +37,10 @@ function App() {
           <Route path='AllProducts' element={<AllProducts/>}/>
           <Route path='Users' element={<Users/>}/>
           <Route path='Dashboard' element={<DashBoard/>}/>
-          <Route path='EditProducts' element={<Editproduct/>}/>
+          <Route path='EditProducts' element={<EditProduct/>}/>
           <Route path='userdetails' element={<UserDetail/>}/>
-          <Route path='allorders' element={<Allorders/>}/>
-          <Route path='spesificorder' element={<Spesificorderview/>}/>
+          <Route path='allorders' element={<AllOrders/>}/>
+          <Route path='spesificorder' element={<SpecificOrderView/>}/>
           <Route path='Addproduct' element={<AddProducts/>}/>
           </Route>
 
@@ -45,8 +48,8 @@ function App() {
           <Route path='Login' element={<Login />} />
          
          <Route path='spesificproduct' element={<CartDetails/>}/>
-         <Route path='AddtoCart' element={<Addtocart/>}/>
-         <Route path='Payment' element={<Paymentsection/>}/>
+         <Route path='AddtoCart' element={<AddToCart/>}/>
+         <Route path='Payment' element={<PaymentSection/>}/>
          <Route path='Orders' element={<Orders/>}/>
         </Routes>
        

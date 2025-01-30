@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartproductdelete, getCart, updateQuantity } from "../../Redex/CartSlice";
 import { useNavigate } from "react-router-dom";
 
-const Addtocart = () => {
+const AddToCart = () => {
   const { cartData } = useSelector((state) => state.Cart);
    const { login, token } = useSelector((state) => state.User);
   const dispatch = useDispatch();
@@ -164,4 +164,4 @@ useEffect(() => {
   );
 };
 
-export default Addtocart;
+export default AddToCart;

@@ -24,7 +24,7 @@ const AllProducts = () => {
   }
   // If there's an error, display the error message
   if (error) {
-    return (<div>Error: {error}</div>);
+    return <div>Error: {error}</div>;
   }
 
   return (

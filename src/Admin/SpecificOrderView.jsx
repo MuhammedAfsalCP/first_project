@@ -4,7 +4,7 @@ import { fetchSpesificorder, getOrderid, updateorder } from '../Redex/OrderSlice
 import { useLocation } from 'react-router-dom';
 
 
-const Spesificorderview = () => {
+const SpecificOrderView = () => {
   const dispatch = useDispatch()
   const location = useLocation();
   const { spesificorder } = useSelector((state) => state.Order);
@@ -102,4 +102,4 @@ const Spesificorderview = () => {
   );
 };
 
-export default Spesificorderview;
+export default SpecificOrderView;

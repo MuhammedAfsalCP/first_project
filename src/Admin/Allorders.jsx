@@ -4,7 +4,7 @@ import { getOrderid } from '../Redex/OrderSlice';
 import { useNavigate } from 'react-router-dom';
 
 
-const Allorders = () => {
+const AllOrders = () => {
   const dispatch=useDispatch()
 const { orderid } = useSelector((state) => state.Order);
     useEffect(()=>{
@@ -56,4 +56,4 @@ const  handleViewClick=(orderId)=>{
   );
 };
 
-export default Allorders;
+export default AllOrders;

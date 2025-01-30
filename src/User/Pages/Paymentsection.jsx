@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { initiateCheckout, resetPaymentState, verifyPayment } from "../../Redex/PaymentSlice";
 import Swal from "sweetalert2";
 
-const Paymentsection = () => {
+const PaymentSection = () => {
   const dispatch = useDispatch();
 
   // Access Redux state using useSelector
@@ -175,4 +175,4 @@ const navigate=useNavigate()
   );
 };
 
-export default Paymentsection;
+export default PaymentSection;
