@@ -6,7 +6,7 @@ import Login from './User/Pages/Login'
 // import ContaxtForm from './User/Contaxt/Contaxt'
 import Home from './User/Pages/Home'
 import CartDetails from './User/Pages/CartDetails'
-import Addtocart from './User/Pages/Addtocart'
+
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,6 +23,7 @@ import AddToCart from './User/Pages/Addtocart'
 import AllOrders from './Admin/Allorders'
 import EditProduct from './Admin/Editproduct'
 import PaymentSection from './User/Pages/PaymentSection'
+
 
 
 
