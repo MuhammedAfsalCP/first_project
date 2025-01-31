@@ -92,6 +92,9 @@ const CartDetails = () => {
           <h1 className="mt-3 text-lg md:text-xl font-semibold text-gray-600">
             Weight: {selectedProduct.Weight}
           </h1>
+          <h1 className="mt-3 text-lg md:text-xl font-semibold text-gray-600">
+            Stock: {selectedProduct.Stock}
+          </h1>
           <h1 className="mt-3 text-lg md:text-xl text-gray-700">
             {selectedProduct.Description}
           </h1>
