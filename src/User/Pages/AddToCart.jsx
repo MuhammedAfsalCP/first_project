@@ -122,7 +122,7 @@ useEffect(() => {
               {/* Price and Delete */}
               <div className="flex items-center justify-between gap-4">
                 <h1 className="text-lg font-semibold text-gray-800">
-                  ${item.item_subtotal}
+                  ₹{item.item_subtotal}
                 </h1>
                 <button
                   className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-600 transition duration-200"
@@ -145,7 +145,7 @@ useEffect(() => {
         <div className="w-full mt-6 flex flex-col md:flex-row justify-end items-center">
           <div className="flex flex-col md:flex-row items-center gap-4">
             <div className="text-lg font-semibold text-gray-800">
-              Total Amount: ${totalPrice}
+              Total Amount: ₹{totalPrice}
             </div>
             <button
               className="w-full md:w-[200px] h-[60px] bg-blue-600 text-white rounded mt-4 md:mt-0 hover:bg-blue-700 transition duration-200"
