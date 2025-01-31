@@ -27,20 +27,20 @@ const Home = () => {
 
   // If loading, display a loading message
 
-  // if (loading) {
-  //   return /* From Uiverse.io by SouravBandyopadhyay */
-  //   (<div class="hourglassBackground">
-  //     <div class="hourglassContainer">
-  //       <div class="hourglassCurves"></div>
-  //       <div class="hourglassCapTop"></div>
-  //       <div class="hourglassGlassTop"></div>
-  //       <div class="hourglassSand"></div>
-  //       <div class="hourglassSandStream"></div>
-  //       <div class="hourglassCapBottom"></div>
-  //       <div class="hourglassGlass"></div>
-  //     </div>
-  //   </div>)
-  // }
+  if (loading) {
+    return /* From Uiverse.io by SouravBandyopadhyay */
+    (<div class="hourglassBackground">
+      <div class="hourglassContainer">
+        <div class="hourglassCurves"></div>
+        <div class="hourglassCapTop"></div>
+        <div class="hourglassGlassTop"></div>
+        <div class="hourglassSand"></div>
+        <div class="hourglassSandStream"></div>
+        <div class="hourglassCapBottom"></div>
+        <div class="hourglassGlass"></div>
+      </div>
+    </div>)
+  }
   const cartadd = (productId) => {
     dispatch(addToCart({ productId: productId }))
     setTimeout(() => {
