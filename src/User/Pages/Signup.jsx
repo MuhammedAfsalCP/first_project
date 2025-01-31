@@ -8,7 +8,7 @@ const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userInfo, loading, error, verifyotp, otperror } = useSelector((state) => state.User);
-  console.log(otperror)
+ 
   const [formData, setFormData] = useState({
     username: "",
     first_name: "",

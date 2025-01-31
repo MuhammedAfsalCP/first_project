@@ -10,7 +10,7 @@ const EditProduct = () => {
   const { products, loading, error, selectedProduct,previous,next } = useSelector(state => state.Products);
 
   const dispatch = useDispatch();
-console.log(formData)
+
   useEffect(() => {
     if (selectedProduct) {
       setFormData({
@@ -66,7 +66,7 @@ console.log(formData)
   const handleSubmit = (e) => {
     e.preventDefault();
     const productid = selectedProduct.id;
-    console.log(productid) // Assuming selectedProduct is the product being edited
+     // Assuming selectedProduct is the product being edited
     dispatch(updateProduct({ formData, productid }));
   };
 
@@ -100,7 +100,14 @@ console.log(formData)
           {/* Product Image */}
           <div className="flex justify-center items-center bg-gray-100 p-4">
             <div className="w-32 h-32 overflow-hidden rounded-full">
-              <img className="object-cover w-full h-full" src={product.Image} alt={product.Name} />
+              <img className="object-cover w-full h-full" src={product.Image &&
+                  typeof product.Image === "string" &&
+                  product.Image.startsWith("https://petfoood.s3.amazonaws.com/https%3A")
+                  ? product.Image.replace(
+                    "https://petfoood.s3.amazonaws.com/https%3A",
+                    "https://"
+                  )
+                  : product.Image} alt={product.Name} />
             </div>
           </div>
 

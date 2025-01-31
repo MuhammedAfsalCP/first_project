@@ -11,7 +11,7 @@ const { orderid } = useSelector((state) => state.Order);
         dispatch(getOrderid())
     },[])
     const navigate=useNavigate()
-console.log(orderid)
+
 const  handleViewClick=(orderId)=>{
     navigate('/spesificorder',{ state: orderId })
 }

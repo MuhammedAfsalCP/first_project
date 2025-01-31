@@ -21,7 +21,7 @@ const SpecificOrderView = () => {
       dispatch(fetchSpesificorder(orderId))
     }, 100);
   }
-  console.log(spesificorder)
+
   return (
     <div className="w-full h-full p-6 flex flex-col">
       <div className="bg-white p-6 rounded-lg shadow-lg flex-1">

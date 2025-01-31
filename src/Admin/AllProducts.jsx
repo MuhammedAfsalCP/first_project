@@ -7,7 +7,7 @@ import { fetchProducts } from '../Redex/ProductSlice';
 const AllProducts = () => {
   const dispatch = useDispatch()
   const { products, loading, error, selectedProduct, next, previous } = useSelector(state => state.Products);
-  console.log(products)
+  
   if (loading) {
     return (
     <div class="hourglassBackground">

@@ -53,7 +53,7 @@ const PaymentSection = () => {
   const handlePayment = async () => {
     if (paymentDetails) {
       const { payment_id, amount, currency } = paymentDetails;
-      console.log(payment_id,amount,currency)
+      
       // Set Razorpay payment options
       const addressValues = [address.name,address.email,address.addressLine];
       const options = {
@@ -63,7 +63,7 @@ const PaymentSection = () => {
         name: "Petfood",
         order_id: payment_id, // Order ID from backend, passed via `paymentDetails`
         handler: (response) => {
-          console.log(response.razorpay_signature,response.razorpay_order_id,response.razorpay_payment_id)
+         
           // Dispatch verifyPayment action with the response details
           dispatch(verifyPayment({
             payment_id: response.razorpay_payment_id, // Razorpay payment ID

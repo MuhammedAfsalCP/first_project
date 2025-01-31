@@ -69,7 +69,7 @@ const AddProducts = () => {
     form.append('Weight', formData.Weight);
     form.append('Stock', formData.Stock);
     form.append('Category', formData.Category);
-    console.log(ingredients)
+   
     form.append('Ingredient', JSON.stringify(ingredients)); // Send ingredients as JSON array
 
     if (formData.Image) {

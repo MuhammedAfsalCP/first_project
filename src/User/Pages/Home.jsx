@@ -57,7 +57,7 @@ const Home = () => {
 
     navigate('/spesificproduct', { state: productId })
   }
-  console.log(products)
+  
   return (
     <>
       {login?.is_staff ? <AdminPanel /> : (

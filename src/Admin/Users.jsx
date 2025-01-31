@@ -16,7 +16,7 @@ const Users = () => {
   }, [])
   const edituser = (user) => {
     const action = user.is_active ? 'Block' : 'Unblock';
-    console.log(action)
+    
     Swal.fire({
       title: `${action.charAt(0).toUpperCase() + action.slice(1)} User?`,
       text: `Are you sure you want to ${action} this ${user.username}?`,

@@ -8,8 +8,6 @@ const DashBoard = () => {
   
   const {totalearnings,totalproducts,totalorders,totalusers} = useSelector((state) => state.DashBoard);
   const dispatch=useDispatch()
-  console.log(totalearnings)
-  console.log(totalorders)
   useEffect(()=>{
   dispatch(totalRevanue())
   },[])
