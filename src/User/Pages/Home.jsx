@@ -42,10 +42,13 @@ const Home = () => {
     </div>)
   }
   const cartadd = (productId) => {
+    if(login){
     dispatch(addToCart({ productId: productId }))
     setTimeout(() => {
       dispatch(getCart())
     }, 100);
+    }else{
+      navigate("/Login")}
   }
 
   // If there's an error, display the error message
