@@ -68,7 +68,7 @@ const Home = () => {
           <Navbar />
 
           {/* Special Offer Section */}
-          <div className="relative w-full bg-gradient-to-r from-blue-400 via-blue-300 to-blue-200 rounded-lg shadow-lg p-8 flex flex-col md:flex-row items-center gap-8 mx-auto mt-[6%] max-w-6xl">
+          <div className="relative w-full bg-gradient-to-r from-blue-400 via-blue-300 to-blue-200 rounded-lg shadow-lg p-8 flex flex-col md:flex-row items-center gap-8 mx-auto md:mt-[6%] mt-[13%] max-w-6xl">
             <div className="max-w-md text-center md:text-left">
               <h1 className="text-4xl font-extrabold text-gray-800 mb-4">Special Offer!</h1>
               <p className="text-lg md:text-xl text-gray-700 mb-6">
