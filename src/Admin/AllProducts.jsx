@@ -52,6 +52,7 @@ const AllProducts = () => {
               <h1 className='text-lg font-semibold text-center'>{product.Name}</h1>
               <h2 className='text-md text-gray-600'>Price = ${product.Price}</h2>
               <h2 className='text-md text-gray-600'>category = {product.Category}</h2>
+              <h2 className='text-md text-gray-600'>Stock = {product.Stock}</h2>
             </div>
           </div>
         )
