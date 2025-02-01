@@ -45,10 +45,13 @@ const CartDetails = () => {
     navigate('/')
    };
     const cartadd=()=>{
-       dispatch(addToCart({ productId: productId}))
-       setTimeout(() => {
-        dispatch(getCart())
-       }, 100);
+       if(login){
+    dispatch(addToCart({ productId: productId }))
+    setTimeout(() => {
+      dispatch(getCart())
+    }, 100);
+    }else{
+      navigate("/Login")}
      }
   return (
     <div className="bg-[#f0f4f8]">
