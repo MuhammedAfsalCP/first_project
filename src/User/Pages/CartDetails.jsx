@@ -120,7 +120,7 @@ const CartDetails = () => {
           <div className="mt-5 flex gap-3 w-full justify-between md:justify-start">
             <button
               onClick={Back} // Navigate to the previous page
-              className="bg-gray-300 h-[50px] w-full md:w-[150px] rounded hover:bg-gray-500 hover:text-white text-lg transition duration-300"
+              className="bg-gray-300 h-[50px] w-[90px] md:w-[150px] rounded hover:bg-gray-500 hover:text-white text-lg transition duration-300"
             >
               Back
             </button>
