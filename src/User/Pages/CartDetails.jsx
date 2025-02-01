@@ -8,7 +8,7 @@ import { addToCart, getCart } from '../../Redex/CartSlice';
 
 const CartDetails = () => {
   const { selectedProduct, loading, error } = useSelector(state => state.Products);
-
+  const { login } = useSelector((state) => state.User);
   const location = useLocation();
   const productId = location.state || null; // Fallback if location.state is null
   const dispatch = useDispatch();
